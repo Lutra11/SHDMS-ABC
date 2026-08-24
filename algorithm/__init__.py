@@ -7,12 +7,16 @@ from .de import DEOptimizer
 from .gbest_abc import GbestABC
 from .gwo import GWOOptimizer
 from .hho import HHOOptimizer
+from .ilshade_rsp import ILSHADERSPOptimizer
 from .iabc import IABC
 from .jade import JADEOptimizer
 from .lshade import LSHADEOptimizer
+from .lr_cma_es import LRCMAESOptimizer
 from .mabc import MABC
+from .mirime import MIRIMEOptimizer
 from .meabc import MeABC
 from .pso import PSOOptimizer
+from .qgdecc import QGDECCOptimizer
 from .rime import RIMEOptimizer
 from .registry import algorithm_display_names, all_algorithm_names, optimize_algorithm
 from .shdms_abc import (
@@ -42,8 +46,12 @@ __all__ = [
     "CMAESOptimizer",
     "GWOOptimizer",
     "HHOOptimizer",
+    "ILSHADERSPOptimizer",
     "SMAOptimizer",
     "RIMEOptimizer",
+    "QGDECCOptimizer",
+    "MIRIMEOptimizer",
+    "LRCMAESOptimizer",
     "CycleMetrics",
     "SHDMSABCConfig",
     "SHDMSABCResult",

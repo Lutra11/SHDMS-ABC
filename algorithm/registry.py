@@ -11,12 +11,16 @@ from .de import DEOptimizer
 from .gbest_abc import GbestABC
 from .gwo import GWOOptimizer
 from .hho import HHOOptimizer
+from .ilshade_rsp import ILSHADERSPOptimizer
 from .iabc import IABC
 from .jade import JADEOptimizer
 from .lshade import LSHADEOptimizer
+from .lr_cma_es import LRCMAESOptimizer
 from .mabc import MABC
+from .mirime import MIRIMEOptimizer
 from .meabc import MeABC
 from .pso import PSOOptimizer
+from .qgdecc import QGDECCOptimizer
 from .rime import RIMEOptimizer
 from .shdms_abc import run_shdms_abc
 from .sma import SMAOptimizer
@@ -48,8 +52,14 @@ def optimize_algorithm(
         return JADEOptimizer(objective, bounds, config).optimize()
     if name in {"LSHADE", "L-SHADE"}:
         return LSHADEOptimizer(objective, bounds, config).optimize()
+    if name in {"ILSHADE-RSP", "ILSHADERSP", "I-LSHADE-RSP"}:
+        return ILSHADERSPOptimizer(objective, bounds, config).optimize()
+    if name == "QGDECC":
+        return QGDECCOptimizer(objective, bounds, config).optimize()
     if name in {"CMA-ES", "CMAES"}:
         return CMAESOptimizer(objective, bounds, config).optimize()
+    if name in {"LR-CMA-ES", "LRCMAES", "LR-CMAES", "LRA-CMA-ES"}:
+        return LRCMAESOptimizer(objective, bounds, config).optimize()
     if name == "GWO":
         return GWOOptimizer(objective, bounds, config).optimize()
     if name == "HHO":
@@ -58,6 +68,8 @@ def optimize_algorithm(
         return SMAOptimizer(objective, bounds, config).optimize()
     if name == "RIME":
         return RIMEOptimizer(objective, bounds, config).optimize()
+    if name in {"MIRIME", "MI-RIME"}:
+        return MIRIMEOptimizer(objective, bounds, config).optimize()
     if name == "SHDMS-ABC":
         return run_shdms_abc(objective, bounds, config, seed_solutions=seed_solutions)
     raise ValueError(f"Unsupported algorithm: {algorithm_name}")
@@ -80,10 +92,14 @@ def all_algorithm_names() -> List[str]:
         "DE",
         "JADE",
         "LSHADE",
+        "iLSHADE-RSP",
+        "QGDECC",
         "CMA-ES",
+        "LR-CMA-ES",
         "GWO",
         "HHO",
         "SMA",
         "RIME",
+        "MIRIME",
         "SHDMS-ABC",
     ]
