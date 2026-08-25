@@ -1,4 +1,4 @@
-"""表4-8：四项归一化目标权重在 ±25% 扰动下的鲁棒性。"""
+"""Table 4-8: Robustness of normalized objective weights under ±25% perturbations."""
 
 from __future__ import annotations
 
@@ -17,10 +17,10 @@ def main() -> None:
     runs, population, target = resolve_budget(args)
     raw, summary = run_robustness("weight", runs, population, target, args.limit, args.seed)
     rows = [{
-        "参数方案": row["参数方案"], "扰动水平": row["扰动水平"],
-        "MARD_h/%": f"{row['MARD_h/%']:.2f}", "最大时段偏差/min": f"{row['最大时段偏差/min']:.2f}",
-        "开行数量变化/列": f"{row['开行数量变化/列']:.2f}", "等待成本变化/%": f"{row['等待成本变化/%']:.2f}",
-        "运营成本变化/%": f"{row['运营成本变化/%']:.2f}", "可行率/%": f"{row['可行率/%']:.1f}",
+        "Parameter setting": row["Parameter setting"], "Perturbation level": row["Perturbation level"],
+        "MARD_h/%": f"{row['MARD_h/%']:.2f}", "Maximum period deviation/min": f"{row['Maximum period deviation/min']:.2f}",
+        "Departure change/trains": f"{row['Departure change/trains']:.2f}", "Waiting cost change/%": f"{row['Waiting cost change/%']:.2f}",
+        "Operating cost change/%": f"{row['Operating cost change/%']:.2f}", "Feasible rate/%": f"{row['Feasible rate/%']:.1f}",
     } for row in summary]
     output = table_output_path(8, args.output)
     write_dict_rows(output, rows)
