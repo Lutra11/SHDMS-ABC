@@ -25,7 +25,7 @@ def main() -> None:
             stations = load_station_capacities(capacity)
             board, alight = load_factor_demands(factors, build_periods(), stations)
             if any(value < 0 for value in board.ravel()) or any(value < 0 for value in alight.ravel()):
-                raise ValueError("客流需求不能为负数")
+                raise ValueError("Passenger demand cannot be negative")
             report.append({"dataset": code, "status": "PASS", "timetable_rows": len(trains), "stations": len(stations), "factor_cells": board.size, "message": ""})
         except Exception as exc:
             report.append({"dataset": code, "status": "FAIL", "timetable_rows": "", "stations": "", "factor_cells": "", "message": str(exc)})
