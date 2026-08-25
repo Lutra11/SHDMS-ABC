@@ -1,4 +1,4 @@
-"""表4-4：S1-S4 场景下各算法代表性可行方案的运营指标。"""
+"""Table 4-4: Operational metrics for representative solutions in S1-S4."""
 
 from __future__ import annotations
 
@@ -34,11 +34,11 @@ def main() -> None:
         for algorithm in OPERATIONAL_ALGORITHMS:
             row = representative(grouped[(scenario, algorithm)])
             rows.append({
-                "场景": scenario, "算法": "SHDMS" if algorithm == "SHDMS-ABC" else algorithm,
-                "平均等待时间/min": f"{row.average_waiting_time:.2f}",
-                "平均载客率/%": f"{row.average_load * 100:.2f}",
-                "日开行总车次": row.daily_departures, "综合目标值F": f"{row.objective:.4f}",
-                "是否可行": "是" if row.feasible else "否",
+                "Scenario": scenario, "Algorithm": "SHDMS" if algorithm == "SHDMS-ABC" else algorithm,
+                "Mean waiting time/min": f"{row.average_waiting_time:.2f}",
+                "Average load factor/%": f"{row.average_load * 100:.2f}",
+                "Daily departures": row.daily_departures, "Composite objective F": f"{row.objective:.4f}",
+                "Feasible": "Yes" if row.feasible else "No",
             })
     output = table_output_path(4, args.output)
     write_dict_rows(output, rows)
