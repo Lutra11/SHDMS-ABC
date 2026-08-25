@@ -1,4 +1,4 @@
-"""表4-9：五项约束惩罚系数在 ×0.5/×2.0 扰动下的鲁棒性。"""
+"""Table 4-9: Robustness of five penalty coefficients under 0.5x and 2.0x perturbations."""
 
 from __future__ import annotations
 
@@ -17,10 +17,10 @@ def main() -> None:
     runs, population, target = resolve_budget(args)
     raw, summary = run_robustness("penalty", runs, population, target, args.limit, args.seed)
     rows = [{
-        "参数方案": row["参数方案"], "扰动水平": row["扰动水平"], "MARD_h/%": f"{row['MARD_h/%']:.2f}",
-        "平均约束违反量": f"{row['平均约束违反量']:.6f}", "最大约束违反量": f"{row['最大约束违反量']:.6f}",
-        "可行率/%": f"{row['可行率/%']:.1f}", "平均运行时间/s": f"{row['平均运行时间/s']:.3f}",
-        "时间变化/%": f"{row['时间变化/%']:.2f}",
+        "Parameter setting": row["Parameter setting"], "Perturbation level": row["Perturbation level"], "MARD_h/%": f"{row['MARD_h/%']:.2f}",
+        "Mean constraint violation": f"{row['Mean constraint violation']:.6f}", "Maximum constraint violation": f"{row['Maximum constraint violation']:.6f}",
+        "Feasible rate/%": f"{row['Feasible rate/%']:.1f}", "Mean runtime/s": f"{row['Mean runtime/s']:.3f}",
+        "Runtime change/%": f"{row['Runtime change/%']:.2f}",
     } for row in summary]
     output = table_output_path(9, args.output)
     write_dict_rows(output, rows)
