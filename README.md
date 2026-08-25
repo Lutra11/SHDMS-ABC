@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/Protocol-6%2C000%20NFEs-2E8B57" alt="6,000 objective evaluations">
   <img src="https://img.shields.io/badge/Datasets-5%20railway%20cases-8A5AA5" alt="Five railway datasets">
   <img src="https://img.shields.io/badge/Execution-CPU-555555" alt="CPU execution">
-  <img src="https://img.shields.io/badge/License-Not%20specified-lightgrey" alt="License not specified">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
 </p>
 
 </div>
@@ -110,10 +110,10 @@ The optimized plan responds to time-varying demand instead of changing every per
 <table>
 <tr>
 <td width="50%" align="center">
-<img src="images/fig_4_2_2_operational_multidim_bar.png" alt="Multi-scenario operational performance comparison" width="100%">
+<img src="images/4-3.png" alt="Figure 4-3: multi-scenario operational performance comparison" width="100%">
 </td>
 <td width="50%" align="center">
-<img src="images/图片1.png" alt="Multi-scenario convergence curves" width="100%">
+<img src="images/4-4.png" alt="Figure 4-4: multi-scenario convergence curves" width="100%">
 </td>
 </tr>
 <tr>
@@ -233,8 +233,8 @@ The [`datas/`](datas) directory contains 35 Excel workbooks organized by manuscr
 | [`4-0.png`](images/4-0.png) | Study area, data organization, mathematical model, and SHDMS-ABC workflow |
 | [`4-1.png`](images/4-1.png) | Passenger demand, departures, and headway response |
 | [`4-2.png`](images/4-2.png) | Station capacity utilization before and after optimization |
-| [`图片1.png`](images/图片1.png) | Multi-scenario convergence curves |
-| [`fig_4_2_2_operational_multidim_bar.png`](images/fig_4_2_2_operational_multidim_bar.png) | Multi-scenario operational performance comparison |
+| [`4-3.png`](images/4-3.png) | Multi-scenario operational performance comparison across S1–S4 |
+| [`4-4.png`](images/4-4.png) | Raw, logarithmic, and normalized convergence curves across S1–S4 |
 
 ## Installation
 
@@ -345,4 +345,4 @@ The experiment writes an aggregate CSV and, where applicable, a sibling raw-run 
 
 ## License
 
-No open-source license is currently included. Unless a `LICENSE` file is added, the source code, workbooks, dataset descriptors, and figures remain under the authors' default copyright.
+This project is released under the [MIT License](LICENSE).
