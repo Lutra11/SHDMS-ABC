@@ -1,4 +1,4 @@
-"""表4-11：五套线路数据上的算法综合目标值与跨数据集平均排名。"""
+"""Table 4-11: Algorithm objectives and cross-dataset mean ranks."""
 
 from __future__ import annotations
 
