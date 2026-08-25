@@ -1,4 +1,4 @@
-"""表4-3：S3、S4 场景下各算法的性能、耗时、收敛代数与平均排名。"""
+"""Table 4-3: Algorithm performance and ranks in scenarios S3 and S4."""
 
 from __future__ import annotations
 
@@ -35,11 +35,11 @@ def main() -> None:
         s4 = [r.score for r in grouped[("S4", algorithm)]]
         all_records = grouped[("S3", algorithm)] + grouped[("S4", algorithm)]
         rows.append({
-            "算法": algorithm, "S3/均值±标准差": fmt_mean_std(*mean_std(s3)),
-            "S4/均值±标准差": fmt_mean_std(*mean_std(s4)),
-            "平均CPU时间/s": f"{mean_std([r.runtime_s for r in all_records])[0]:.3f}",
-            "平均收敛代数": f"{mean_std([r.convergence_cycle for r in all_records])[0]:.1f}",
-            "平均排名": f"{(scenario_ranks['S3'][algorithm] + scenario_ranks['S4'][algorithm]) / 2:.2f}",
+            "Algorithm": algorithm, "S3/Mean±SD": fmt_mean_std(*mean_std(s3)),
+            "S4/Mean±SD": fmt_mean_std(*mean_std(s4)),
+            "Mean CPU time/s": f"{mean_std([r.runtime_s for r in all_records])[0]:.3f}",
+            "Mean convergence cycle": f"{mean_std([r.convergence_cycle for r in all_records])[0]:.1f}",
+            "Mean rank": f"{(scenario_ranks['S3'][algorithm] + scenario_ranks['S4'][algorithm]) / 2:.2f}",
         })
     output = table_output_path(3, args.output)
     write_dict_rows(output, rows)
