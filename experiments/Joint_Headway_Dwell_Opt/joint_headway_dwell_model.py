@@ -153,7 +153,7 @@ class ScenarioDefinition:
     description: str
     overall_scale: float
     period_scale: Sequence[float]
-    station_focus: Mapping[str, float]
+    station_focus: Mapping[int, float]
 
 
 DATASET_SPECS: Dict[str, DatasetSpec] = {
@@ -166,12 +166,12 @@ DATASET_SPECS: Dict[str, DatasetSpec] = {
 
 
 SCENARIOS: Dict[str, ScenarioDefinition] = {
-    "S1": ScenarioDefinition("S1", "基准场景", 1.00, [1, 1, 1, 1, 1, 1], {}),
-    "S2": ScenarioDefinition("S2", "整体需求增长场景", 1.10, [1, 1, 1, 1, 1, 1], {}),
-    "S3": ScenarioDefinition("S3", "高峰强化场景", 1.12, [1, 1.20, 1, 1, 1.20, 1], {}),
+    "S1": ScenarioDefinition("S1", "Baseline scenario", 1.00, [1, 1, 1, 1, 1, 1], {}),
+    "S2": ScenarioDefinition("S2", "Overall demand growth", 1.10, [1, 1, 1, 1, 1, 1], {}),
+    "S3": ScenarioDefinition("S3", "Peak demand intensification", 1.12, [1, 1.20, 1, 1, 1.20, 1], {}),
     "S4": ScenarioDefinition(
-        "S4", "关键车站压力测试场景", 1.20,
-        [1, 1.15, 1, 1, 1.15, 1], {"南京南": 1.20, "江阴": 1.20, "太仓": 1.20},
+        "S4", "Key-station stress test", 1.20,
+        [1, 1.15, 1, 1, 1.15, 1], {0: 1.20, 5: 1.20, 8: 1.20},
     ),
 }
 
@@ -370,8 +370,9 @@ def build_periods() -> List[PeriodDefinition]:
 
 
 def normalize_station_name(value: object) -> str:
-    text = re.sub(r"[（(].*?[)）]", "", str(value).strip())
-    return text.replace("站", "").strip()
+    text = re.sub(r"[\uFF08(].*?[)\uFF09]", "", str(value).strip())
+    station_suffix = chr(0x7AD9)
+    return text.removesuffix(station_suffix).strip()
 
 
 def to_minutes(value: object) -> int:
@@ -389,7 +390,7 @@ def to_minutes(value: object) -> int:
             return parsed.hour * 60 + parsed.minute
         except ValueError:
             pass
-    raise ValueError(f"无法解析时间值: {value!r}")
+    raise ValueError(f"Cannot parse time value: {value!r}")
 
 
 def find_bundle_files(spec: DatasetSpec) -> Tuple[Path, Path, Path]:
@@ -404,7 +405,7 @@ def find_bundle_files(spec: DatasetSpec) -> Tuple[Path, Path, Path]:
     if not capacity.exists():
         missing.append("3.Platform Capacity.xlsx")
     if missing:
-        raise FileNotFoundError(f"{spec.directory} 缺少: {', '.join(missing)}")
+        raise FileNotFoundError(f"{spec.directory} is missing: {', '.join(missing)}")
     return timetables[0], factors[0], capacity
 
 
@@ -425,7 +426,7 @@ def load_timetable(path: Path) -> List[Dict[str, object]]:
     required = ["Train code", "station1", "station2", "distance(km)", "time1", "time2", "interval(min)"]
     absent = [name for name in required if name not in col]
     if absent:
-        raise ValueError(f"{path.name} 缺少字段: {', '.join(absent)}")
+        raise ValueError(f"{path.name} is missing fields: {', '.join(absent)}")
 
     def get(row: Tuple[object, ...], name: str, default: object = None) -> object:
         index = col.get(name)
@@ -456,7 +457,7 @@ def load_station_capacities(path: Path) -> List[StationCapacity]:
     required = ["station_name", "km", "platforms", "lines"]
     absent = [name for name in required if name not in col]
     if absent:
-        raise ValueError(f"{path.name} 缺少字段: {', '.join(absent)}")
+        raise ValueError(f"{path.name} is missing fields: {', '.join(absent)}")
 
     def get(row: Tuple[object, ...], name: str, default: object) -> object:
         index = col.get(name)
@@ -481,10 +482,10 @@ def load_station_capacities(path: Path) -> List[StationCapacity]:
             station_class=str(get(row, "station_class", "standard")),
         ))
     if not stations:
-        raise ValueError(f"{path.name} 没有有效车站记录")
+        raise ValueError(f"{path.name} contains no valid station records")
     for station in stations:
         if not 0 <= station.min_dwell_min <= station.base_dwell_min <= station.max_dwell_min:
-            raise ValueError(f"{station.name} 的停站时间上下限无效")
+            raise ValueError(f"Invalid dwell-time bounds for {station.name}")
     return stations
 
 
@@ -498,7 +499,7 @@ def load_factor_demands(
     required = ["period_index", "station_name", "boarding_demand", "alighting_demand"]
     absent = [name for name in required if name not in col]
     if absent:
-        raise ValueError(f"{path.name} 缺少字段: {', '.join(absent)}")
+        raise ValueError(f"{path.name} is missing fields: {', '.join(absent)}")
     period_index = {period.index: index for index, period in enumerate(periods)}
     station_index = {station.name: index for index, station in enumerate(stations)}
     board = np.zeros((len(periods), len(stations)), dtype=float)
@@ -516,9 +517,9 @@ def load_factor_demands(
         seen[pi, si] = True
     if not np.all(seen):
         missing = int(np.size(seen) - np.count_nonzero(seen))
-        raise ValueError(f"{path.name} 缺少 {missing} 个时段-车站需求组合")
+        raise ValueError(f"{path.name} is missing {missing} period-station demand combinations")
     if np.any(board < 0) or np.any(alight < 0):
-        raise ValueError(f"{path.name} 包含负客流量")
+        raise ValueError(f"{path.name} contains negative passenger demand")
     return board, alight
 
 
@@ -541,7 +542,7 @@ def compute_period_statistics(
     for period in periods:
         values = intervals[period.index]
         if not values:
-            raise ValueError(f"时段 {period.label} 没有有效发车间隔记录")
+            raise ValueError(f"Period {period.label} has no valid headway records")
         average = float(mean(values))
         result[period.index] = PeriodStats(
             len(values), average, float(median(values)), min(values), max(values),
@@ -867,7 +868,7 @@ def build_dataset_model(
     """Build the canonical model from a standardized dataset bundle."""
 
     if code not in DATASET_SPECS:
-        raise KeyError(f"未知数据集 {code!r}；可选值: {', '.join(DATASET_SPECS)}")
+        raise KeyError(f"Unknown dataset {code!r}; available values: {', '.join(DATASET_SPECS)}")
     timetable, factors, capacity = find_bundle_files(DATASET_SPECS[code])
     rows = load_timetable(timetable)
     periods = build_periods()
@@ -898,7 +899,10 @@ def create_scenario_model(
 ) -> ImprovedModel:
     definition = SCENARIOS[scenario] if isinstance(scenario, str) else scenario
     base = model.base
-    station_scale = np.array([definition.station_focus.get(station.name, 1.0) for station in base.stations])
+    station_scale = np.array([
+        definition.station_focus.get(index, 1.0)
+        for index, _ in enumerate(base.stations)
+    ])
     period_scale = np.asarray(definition.period_scale, dtype=float)[:, None]
     if period_scale.shape != (base.period_count, 1):
         raise ValueError(f"scenario period_scale must contain {base.period_count} values")
