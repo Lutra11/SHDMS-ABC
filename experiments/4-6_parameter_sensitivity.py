@@ -1,4 +1,4 @@
-"""表4-6：βw、ρH、τD 与 LR 的单因素参数敏感性。"""
+"""Table 4-6: One-factor sensitivity of beta_w, rho_H, tau_D and L_R."""
 
 from __future__ import annotations
 
@@ -18,10 +18,10 @@ from common.statistics import mean_std
 # These baselines reproduce the parameter levels printed in the supplied Table 4-6.
 BASELINE = {"beta": 1.00, "history_rate": 0.50, "diversity_low_threshold": 0.10}
 PARAMETERS = [
-    ("状态匹配影响强度", "βw", "beta", [0.50, 1.00, 1.50]),
-    ("历史信用更新系数", "ρH", "history_rate", [0.10, 0.50, 0.90]),
-    ("种群多样性阈值", "τD", "diversity_low_threshold", [0.02, 0.10, 0.20]),
-    ("重启触发阈值", "LR", "limit", [10, 30, 50]),
+    ("State-matching influence", "βw", "beta", [0.50, 1.00, 1.50]),
+    ("Success-history update rate", "ρH", "history_rate", [0.10, 0.50, 0.90]),
+    ("Population-diversity threshold", "τD", "diversity_low_threshold", [0.02, 0.10, 0.20]),
+    ("Restart trigger threshold", "LR", "limit", [10, 30, 50]),
 ]
 
 
@@ -44,24 +44,24 @@ def main() -> None:
             for offset in range(runs):
                 result, metrics, elapsed = run_variant(model, "SHDMS-ABC", args.seed + offset, population, max_cycles, actual_limit, overrides)
                 raw.append({
-                    "参数类别": name, "参数符号": symbol, "参数值": value, "run": offset + 1,
+                    "parameter_category": name, "parameter_symbol": symbol, "parameter_value": value, "run": offset + 1,
                     "score": benchmark_score(metrics), "feasible": hard_violation(metrics) <= 1e-9,
                     "convergence_cycle": convergence_cycle(result.convergence_history), "runtime_s": elapsed,
                 })
     grouped = defaultdict(list)
     for row in raw:
-        grouped[(row["参数符号"], row["参数值"])].append(row)
+        grouped[(row["parameter_symbol"], row["parameter_value"])].append(row)
     rows = []
     for name, symbol, _, values in PARAMETERS:
         for value in values:
             subset = grouped[(symbol, value)]
             scores = [float(row["score"]) for row in subset]
             rows.append({
-                "参数类别": name, "参数设置": f"{symbol}={value:g}", "最优值": f"{min(scores):.4f}",
-                "均值±标准差": fmt_mean_std(*mean_std(scores)),
-                "可行率/%": f"{100 * sum(bool(row['feasible']) for row in subset) / len(subset):.1f}",
-                "平均收敛代数": f"{np.mean([row['convergence_cycle'] for row in subset]):.1f}",
-                "平均运行时间/s": f"{np.mean([row['runtime_s'] for row in subset]):.3f}",
+                "Parameter category": name, "Parameter setting": f"{symbol}={value:g}", "Best": f"{min(scores):.4f}",
+                "Mean±SD": fmt_mean_std(*mean_std(scores)),
+                "Feasible rate/%": f"{100 * sum(bool(row['feasible']) for row in subset) / len(subset):.1f}",
+                "Mean convergence cycle": f"{np.mean([row['convergence_cycle'] for row in subset]):.1f}",
+                "Mean runtime/s": f"{np.mean([row['runtime_s'] for row in subset]):.3f}",
             })
     output = table_output_path(6, args.output)
     write_dict_rows(output, rows)
