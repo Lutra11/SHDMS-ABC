@@ -1,4 +1,4 @@
-"""表4-2：原方案与优化方案的运营、经济及约束指标。"""
+"""Table 4-2: Operational, economic and constraint metrics."""
 
 from __future__ import annotations
 
@@ -21,17 +21,17 @@ def main() -> None:
     original = model.base.evaluate_vector(model.baseline_vector())
     _, _, optimized = run_algorithm(model, "SHDMS-ABC", args.seed, population, target, args.limit, use_seed_solutions=True)
     metrics = [
-        ("企业运行成本", original.run_cost, optimized.run_cost),
-        ("旅客等待成本", original.wait_cost, optimized.wait_cost),
-        ("目标上座损失", original.occupancy_loss, optimized.occupancy_loss),
-        ("停站调整成本", original.stop_adjustment_cost, optimized.stop_adjustment_cost),
-        ("票务收入", original.revenue, optimized.revenue),
-        ("平均载客率/%", original.average_load * 100, optimized.average_load * 100),
-        ("最大能力利用率/%", original.max_capacity_utilization * 100, optimized.max_capacity_utilization * 100),
-        ("日开行总车次", np.sum(original.departures), np.sum(optimized.departures)),
-        ("综合目标值F", original.objective, optimized.objective),
+        ("Operating cost", original.run_cost, optimized.run_cost),
+        ("Passenger waiting cost", original.wait_cost, optimized.wait_cost),
+        ("Target occupancy loss", original.occupancy_loss, optimized.occupancy_loss),
+        ("Dwell adjustment cost", original.stop_adjustment_cost, optimized.stop_adjustment_cost),
+        ("Ticket revenue", original.revenue, optimized.revenue),
+        ("Average load factor/%", original.average_load * 100, optimized.average_load * 100),
+        ("Maximum capacity utilization/%", original.max_capacity_utilization * 100, optimized.max_capacity_utilization * 100),
+        ("Daily departures", np.sum(original.departures), np.sum(optimized.departures)),
+        ("Composite objective F", original.objective, optimized.objective),
     ]
-    rows = [{"指标": name, "原方案": f"{before:.4f}", "优化方案": f"{after:.4f}", "相对变化/%": f"{(after - before) / max(abs(before), 1e-12) * 100:.2f}"} for name, before, after in metrics]
+    rows = [{"Metric": name, "Baseline": f"{before:.4f}", "Optimized": f"{after:.4f}", "Relative change/%": f"{(after - before) / max(abs(before), 1e-12) * 100:.2f}"} for name, before, after in metrics]
     output = table_output_path(2, args.output)
     write_dict_rows(output, rows)
     print(output)
