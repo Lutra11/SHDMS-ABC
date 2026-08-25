@@ -1,4 +1,4 @@
-"""表4-7：SHDMS-ABC 四个核心机制的消融实验。"""
+"""Table 4-7: Ablation study of four SHDMS-ABC mechanisms."""
 
 from __future__ import annotations
 
@@ -50,10 +50,10 @@ def main() -> None:
             raw_p, holm_p, effect = f"{p_value:.4g}", f"{adjusted[variant]:.4g}", f"{a12:.3f}"
             result_text = "+" if adjusted[variant] < 0.05 and np.mean(reference) < np.mean(contender) else ("-" if adjusted[variant] < 0.05 else "=")
         rows.append({
-            "变体": variant, "最优值": f"{min(scores):.4f}", "均值±标准差": fmt_mean_std(*mean_std(scores)),
-            "平均收敛代数": f"{np.mean([row['convergence_cycle'] for row in subset]):.1f}",
-            "平均运行时间/s": f"{np.mean([row['runtime_s'] for row in subset]):.3f}",
-            "Raw p": raw_p, "Holm p": holm_p, "A12": effect, "结果": result_text,
+            "Variant": variant, "Best": f"{min(scores):.4f}", "Mean±SD": fmt_mean_std(*mean_std(scores)),
+            "Mean convergence cycle": f"{np.mean([row['convergence_cycle'] for row in subset]):.1f}",
+            "Mean runtime/s": f"{np.mean([row['runtime_s'] for row in subset]):.3f}",
+            "Raw p": raw_p, "Holm p": holm_p, "A12": effect, "Result": result_text,
         })
     output = table_output_path(7, args.output)
     write_dict_rows(output, rows)
