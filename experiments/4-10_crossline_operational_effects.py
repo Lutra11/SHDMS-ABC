@@ -1,4 +1,4 @@
-"""表4-10：SHDMS-ABC 在五套线路数据上的运营效果与计算效率。"""
+"""Table 4-10: SHDMS-ABC operational effects and efficiency on five datasets."""
 
 from __future__ import annotations
 
