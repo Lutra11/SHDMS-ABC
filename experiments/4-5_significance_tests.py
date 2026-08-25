@@ -1,4 +1,4 @@
-"""表4-5：S1-S4 上以 SHDMS-ABC 为参照的 Friedman/Wilcoxon 配对检验。"""
+"""Table 4-5: Friedman and paired Wilcoxon tests across S1-S4."""
 
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ REFERENCE = "SHDMS-ABC"
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     add_budget_arguments(parser, runs=10)
-    parser.add_argument("--raw-input", type=Path, help="可选：读取已有逐次结果 CSV，跳过优化")
+    parser.add_argument("--raw-input", type=Path, help="Read an existing run-level CSV and skip optimization")
     args = parser.parse_args()
     if args.raw_input:
         raw_rows = read_dict_rows(args.raw_input)
@@ -47,17 +47,17 @@ def main() -> None:
         low, high = confidence_interval_95(values)
         if algorithm == REFERENCE:
             statistic = raw_p = holm_p = effect = "—"
-            result = "基准"
+            result = "Baseline"
         else:
             statistic, raw_p, effect, reference, contender = tests[algorithm]
             holm_p = adjusted[algorithm]
             result = "+" if holm_p < 0.05 and sum(reference) < sum(contender) else ("-" if holm_p < 0.05 else "=")
             statistic, raw_p, holm_p, effect = f"{statistic:.1f}", f"{raw_p:.4g}", f"{holm_p:.4g}", f"{effect:.3f}"
         rows.append({
-            "算法": algorithm, "均值": f"{avg:.4f}", "标准差": f"{std:.4f}",
-            "95%置信区间": f"[{low:.4f}, {high:.4f}]", "Friedman平均秩": f"{ranks[algorithm]:.3f}",
-            "Wilcoxon W": statistic, "原始p值": raw_p, "Holm校正p值": holm_p,
-            "A12": effect, "检验结果": result,
+            "Algorithm": algorithm, "Mean": f"{avg:.4f}", "SD": f"{std:.4f}",
+            "95% confidence interval": f"[{low:.4f}, {high:.4f}]", "Friedman mean rank": f"{ranks[algorithm]:.3f}",
+            "Wilcoxon W": statistic, "Raw p": raw_p, "Holm-adjusted p": holm_p,
+            "A12": effect, "Test result": result,
         })
     output = table_output_path(5, args.output)
     write_dict_rows(output, rows)
