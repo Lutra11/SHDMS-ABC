@@ -1,0 +1,8 @@
+# SHDMS-ABC experiment environment
+# Python 3.10 or newer is required; Python 3.12 is recommended.
+numpy>=1.26.4,<3.0
+pandas>=2.2.0,<4.0
+scipy>=1.11.4,<2.0
+openpyxl>=3.1.2,<4.0
+matplotlib>=3.8.0,<4.0
+seaborn>=0.13.2,<1.0
