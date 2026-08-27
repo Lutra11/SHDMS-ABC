@@ -55,7 +55,7 @@ The experiments examine this proposition from three perspectives: optimization p
 
 ## Method at a glance
 
-![SHDMS-ABC study area, model, and optimization workflow](images/4-0.png)
+![SHDMS-ABC study area, model, and optimization workflow](images/png/4-0.png)
 
 ~~~mermaid
 flowchart LR
@@ -91,10 +91,10 @@ The implementation is centered in [`algorithm/shdms_abc.py`](algorithm/shdms_abc
 <table>
 <tr>
 <td width="50%" align="center">
-<img src="images/4-1.png" alt="Passenger demand, departures, and headway response" width="100%">
+<img src="images/png/4.3.1.png" alt="Passenger demand, departure allocation, and headway adjustment" width="100%">
 </td>
 <td width="50%" align="center">
-<img src="images/4-2.png" alt="Station capacity utilization before and after optimization" width="100%">
+<img src="images/png/4-2.png" alt="Station capacity utilization before and after optimization" width="100%">
 </td>
 </tr>
 <tr>
@@ -110,10 +110,10 @@ The optimized plan responds to time-varying demand instead of changing every per
 <table>
 <tr>
 <td width="50%" align="center">
-<img src="images/4-3.png" alt="Figure 4-3: multi-scenario operational performance comparison" width="100%">
+<img src="images/png/4-3.png" alt="Multi-scenario operational performance comparison" width="100%">
 </td>
 <td width="50%" align="center">
-<img src="images/4-4.png" alt="Figure 4-4: multi-scenario convergence curves" width="100%">
+<img src="images/png/4-4.png" alt="Multi-scenario convergence curves" width="100%">
 </td>
 </tr>
 <tr>
@@ -200,7 +200,9 @@ SHDMS-ABC/
 │   ├── Supplement/            # Four generalization-oriented railway datasets
 │   └── DATASET.md             # Dataset definition and download information
 ├── datas/                     # 35 curated single-sheet result workbooks
-├── images/                    # Experimental and methodological figures
+├── images/
+│   ├── png/                   # Raster previews for GitHub and the manuscript
+│   └── pdf/                   # Publication-ready vector figures
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -230,11 +232,16 @@ The [`datas/`](datas) directory contains 35 Excel workbooks organized by manuscr
 
 | Figure | Contents |
 |---|---|
-| [`4-0.png`](images/4-0.png) | Study area, data organization, mathematical model, and SHDMS-ABC workflow |
-| [`4-1.png`](images/4-1.png) | Passenger demand, departures, and headway response |
-| [`4-2.png`](images/4-2.png) | Station capacity utilization before and after optimization |
-| [`4-3.png`](images/4-3.png) | Multi-scenario operational performance comparison across S1–S4 |
-| [`4-4.png`](images/4-4.png) | Raw, logarithmic, and normalized convergence curves across S1–S4 |
+| [`png/4-0.png`](images/png/4-0.png) | Raster overview of the study area, joint optimization model, and SHDMS-ABC workflow |
+| [`pdf/Framework.pdf`](images/pdf/Framework.pdf) | Publication-ready vector version of the complete research framework |
+| [`png/4-1.png`](images/png/4-1.png) | Expanded passenger-flow, departure-allocation, and headway-response comparison |
+| [`png/4.3.1.png`](images/png/4.3.1.png) | Processed manuscript figure for demand-responsive departure and headway adjustment |
+| [`pdf/4.3.1.pdf`](images/pdf/4.3.1.pdf) | Vector version of the period-level demand and headway-adjustment figure |
+| [`png/4-2.png`](images/png/4-2.png) | Platform and track utilization before and after optimization across six periods |
+| [`png/4-3.png`](images/png/4-3.png) | Multi-scenario waiting time, load factor, train supply, and objective comparison |
+| [`png/4-4.png`](images/png/4-4.png) | Updated raw, logarithmic, and normalized convergence curves across S1-S4 |
+| [`pdf/4.3.2.pdf`](images/pdf/4.3.2.pdf) | Vector multi-scenario convergence comparison with uncertainty bands |
+| [`pdf/4.4.4.pdf`](images/pdf/4.4.4.pdf) | Cross-line waiting time, load/capacity utilization, train supply, and operating-cost comparison |
 
 ## Installation
 
