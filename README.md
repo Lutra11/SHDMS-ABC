@@ -124,6 +124,70 @@ The optimized plan responds to time-varying demand instead of changing every per
 
 The repository retains both optimization-space evidence and operational metrics. Objective values are therefore interpreted together with feasibility, passenger waiting, train supply, load factor, capacity utilization, runtime, and convergence behavior.
 
+### Objective weights and constraint penalties
+
+The composite objective combines four normalized operating terms and five constraint-violation penalties. The baseline objective weights deliberately assign equal priority to railway operating cost and passenger waiting cost, while occupancy deviation and stop adjustment provide secondary regularization.
+
+| Symbol | Model component | Baseline value |
+|---|---|---:|
+| `ω1` | Railway operating cost, `Cq` | 0.35 |
+| `ω2` | Passenger waiting cost, `Cp` | 0.35 |
+| `ω3` | Target-occupancy deviation, `Cocc` | 0.15 |
+| `ω4` | Dwell/stop-adjustment cost, `Cstop` | 0.15 |
+
+Each weight was perturbed by ±25%, with the other three weights renormalized so that the vector continued to sum to one. Across the eight perturbations, headway MARD remained between 0.71% and 2.05%, the maximum period-level deviation did not exceed 0.79 min, and the change in daily departures stayed between −0.8 and +1.0 trains. Passenger-waiting and operating-cost changes remained within −0.71% to +1.89% and −1.36% to +1.69%, respectively; every tested setting retained 100% feasibility. The largest schedule response occurred for `ω4`, indicating that the stop-adjustment term is the most influential weight within this local test range. See the [objective-weight robustness results](datas/4-9-2.xlsx).
+
+| Symbol | Penalized constraint | Baseline value |
+|---|---|---:|
+| `λ1` | Platform/line capacity | 2,500 |
+| `λ2` | Load-factor bounds | 300 |
+| `λ3` | Minimum revenue | 1,200 |
+| `λ4` | Demand coverage | 1,800 |
+| `λ5` | Safe headway | 5,000 |
+
+Each penalty coefficient was independently scaled by ×0.5 and ×2.0. Headway MARD remained between 0.66% and 1.72%, all ten settings retained 100% feasibility, and runtime changed by −12.91% to +0.87% relative to the baseline. Mean constraint violation remained at or below 0.001775 and the largest observed single violation was 0.00858. These results support local robustness over the tested scaling range, but do not imply invariance to arbitrary penalty values. See the [penalty-coefficient robustness results](datas/4-10-2.xlsx).
+
+### Boarding and alighting dwell-response coefficients
+
+The manuscript notation uses `η1` and `η2`—sometimes visually read as `n1` and `n2`—for the boarding- and alighting-demand contributions to reference dwell time. The supplementary response-surface experiment highlights `η1 = 0.0100` and `η2 = 0.0110` as its reference grid point and evaluates the operational response over a wider neighborhood.
+
+<p align="center">
+  <img src="images/supplement/S8.png" alt="Operational responses across the eta1-eta2 grid" width="92%">
+</p>
+
+Across the plotted grid, average dwell time increases smoothly from 3.370 to 3.752 min as the two coefficients rise. Maximum capacity utilization remains within 89.58%–93.75%, while daily train supply stays in the narrow range of 58.2–60.4 runs. The one-factor ±20% experiment is similarly stable for `η1` in both directions and for a 20% decrease in `η2`: headway MARD remains below 2.70% and all cases are feasible. In contrast, increasing `η2` by 20% raises the composite objective to `3.879683 ± 5.735017`, identifying a local sensitivity to a stronger alighting-time response. See the [coefficient-robustness results](datas/4-8-2.xlsx).
+
+### Supplementary statistical, ablation, and transfer evidence
+
+<table>
+<tr>
+<td width="50%" align="center"><img src="images/supplement/S1.png" alt="Multi-scenario statistical comparison" width="100%"></td>
+<td width="50%" align="center"><img src="images/supplement/S2.png" alt="Multi-scenario operational outcomes" width="100%"></td>
+</tr>
+<tr>
+<td valign="top"><strong>Scenario-level distributions.</strong> Mean, dispersion, and rank are reported together, making between-run stability visible instead of relying on a single best value.</td>
+<td valign="top"><strong>Operational outcomes.</strong> Waiting time, load factor, daily train runs, and the minimum feasible objective connect optimization performance to service decisions.</td>
+</tr>
+<tr>
+<td width="50%" align="center"><img src="images/supplement/S3.png" alt="Statistical significance and effect-size analysis" width="100%"></td>
+<td width="50%" align="center"><img src="images/supplement/S5-2.png" alt="Multi-dataset ablation analysis" width="100%"></td>
+</tr>
+<tr>
+<td valign="top"><strong>Statistical evidence.</strong> Confidence intervals, Friedman ranks, Holm-adjusted tests, and A12 effect sizes distinguish systematic differences from visual gaps.</td>
+<td valign="top"><strong>Ablation evidence.</strong> Module removal is evaluated across railway datasets, revealing both stable contributions and line-dependent interactions.</td>
+</tr>
+<tr>
+<td width="50%" align="center"><img src="images/supplement/S9-1.png" alt="Cross-line generalization and quality-efficiency trade-off" width="100%"></td>
+<td width="50%" align="center"><img src="images/supplement/S9-2.png" alt="Cross-line composite objective comparison" width="100%"></td>
+</tr>
+<tr>
+<td valign="top"><strong>Generalization and efficiency.</strong> Cross-line ranks are interpreted jointly with runtime to expose the quality–efficiency trade-off.</td>
+<td valign="top"><strong>Transfer performance.</strong> Composite objectives and average ranks show that performance transfers across lines but remains dataset dependent.</td>
+</tr>
+</table>
+
+Taken together, the supplementary results position SHDMS-ABC as a competitive, feasible method rather than a universal winner. It ranks strongly in several scenarios and railway lines, while QGDECC or iLSHADE-RSP remains stronger in others. The ablation results are also mixed across datasets, which supports interpreting the adaptive mechanisms as an interacting system rather than claiming that every module improves every case independently.
+
 ## Experimental design
 
 ### Operating scenarios
@@ -202,7 +266,8 @@ SHDMS-ABC/
 ├── datas/                     # 35 curated single-sheet result workbooks
 ├── images/
 │   ├── png/                   # Raster previews for GitHub and the manuscript
-│   └── pdf/                   # Publication-ready vector figures
+│   ├── pdf/                   # Publication-ready vector figures
+│   └── supplement/            # Statistical, sensitivity, ablation, and transfer figures
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -242,6 +307,13 @@ The [`datas/`](datas) directory contains 35 Excel workbooks organized by manuscr
 | [`png/4-4.png`](images/png/4-4.png) | Updated raw, logarithmic, and normalized convergence curves across S1-S4 |
 | [`pdf/4.3.2.pdf`](images/pdf/4.3.2.pdf) | Vector multi-scenario convergence comparison with uncertainty bands |
 | [`pdf/4.4.4.pdf`](images/pdf/4.4.4.pdf) | Cross-line waiting time, load/capacity utilization, train supply, and operating-cost comparison |
+| [`supplement/S1.png`](images/supplement/S1.png) | Scenario-level objective distributions, uncertainty, and algorithm ranks |
+| [`supplement/S2.png`](images/supplement/S2.png) | Scenario-level waiting time, load factor, train supply, and minimum objective |
+| [`supplement/S3.png`](images/supplement/S3.png) | Confidence intervals, Friedman ranks, Holm tests, and A12 effect sizes |
+| [`supplement/S5-2.png`](images/supplement/S5-2.png) | Multi-dataset ablation effects, variability, runtime, and convergence |
+| [`supplement/S8.png`](images/supplement/S8.png) | Operational response surfaces across the `η1`–`η2` grid |
+| [`supplement/S9-1.png`](images/supplement/S9-1.png) | Cross-line generalization and quality–efficiency comparison |
+| [`supplement/S9-2.png`](images/supplement/S9-2.png) | Cross-line composite objectives and average algorithm ranks |
 
 ## Installation
 
