@@ -2,7 +2,7 @@
 
 <h1>SHDMS-ABC</h1>
 
-<h3>A Success-History-Driven Dynamic Multi-Strategy Artificial Bee Colony Algorithm for Intercity Railway Timetable Optimization</h3>
+<h3>A dynamic multi-strategy algorithm for train headway optimization in intercity railways</h3>
 
 <p>
   <a href="#method-at-a-glance">Method</a> ·
