@@ -55,23 +55,7 @@ The experiments examine this proposition from three perspectives: optimization p
 
 ## Method at a glance
 
-![SHDMS-ABC study area, model, and optimization workflow](images/png/4-0.png)
-
-~~~mermaid
-flowchart LR
-    A["Timetable, demand, and capacity workbooks"] --> B["Six-period railway operating model"]
-    B --> C["Headway and dwell-time decision vector"]
-    C --> D["Population initialization and seeded plans"]
-    D --> E["Population-state measurement"]
-    E --> F["Four search operators"]
-    F --> G["Success-history credit update"]
-    G --> H["State-aware operator probabilities"]
-    H --> I["Employed and onlooker phases"]
-    I --> J["Diversity-aware scout/restart"]
-    J --> K["Local best refinement"]
-    K --> L["Feasible operating plan and metrics"]
-    L --> E
-~~~
+![SHDMS-ABC optimization workflow](images/png/workflow.png)
 
 The implementation combines six interacting mechanisms:
 
@@ -297,6 +281,7 @@ The [`datas/`](datas) directory contains 35 Excel workbooks organized by manuscr
 
 | Figure | Contents |
 |---|---|
+| [`png/workflow.png`](images/png/workflow.png) | SHDMS-ABC model setup, initialization, adaptive-search loop, and operating-plan output workflow |
 | [`png/4-0.png`](images/png/4-0.png) | Raster overview of the study area, joint optimization model, and SHDMS-ABC workflow |
 | [`pdf/Framework.pdf`](images/pdf/Framework.pdf) | Publication-ready vector version of the complete research framework |
 | [`png/4-1.png`](images/png/4-1.png) | Expanded passenger-flow, departure-allocation, and headway-response comparison |
