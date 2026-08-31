@@ -55,6 +55,8 @@ The experiments examine this proposition from three perspectives: optimization p
 
 ## Method at a glance
 
+![SHDMS-ABC study area, model, and optimization workflow](images/png/4-0.png)
+
 ![SHDMS-ABC optimization workflow](images/png/workflow.png)
 
 The implementation combines six interacting mechanisms:
