@@ -10,7 +10,7 @@ COMMON_DIR = Path(__file__).resolve().parent
 EXPERIMENTS_DIR = COMMON_DIR.parent
 GIT_CONTENT_DIR = EXPERIMENTS_DIR.parent
 DATASETS_DIR = GIT_CONTENT_DIR / "datasets"
-DATAS_DIR = GIT_CONTENT_DIR / "datas"
+DATA_DIR = GIT_CONTENT_DIR / "data"
 
 
 def ensure_import_paths() -> None:
@@ -24,7 +24,7 @@ def ensure_import_paths() -> None:
 def table_output_path(table_no: int, output: str | Path | None = None) -> Path:
     """Resolve a table CSV path and create only its parent directory."""
 
-    path = Path(output) if output else DATAS_DIR / f"table_4_{table_no}.csv"
+    path = Path(output) if output else DATA_DIR / f"table_4_{table_no}.csv"
     if not path.is_absolute():
         path = (Path.cwd() / path).resolve()
     path.parent.mkdir(parents=True, exist_ok=True)
