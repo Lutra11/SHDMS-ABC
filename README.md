@@ -121,7 +121,7 @@ The composite objective combines four normalized operating terms and five constr
 | `ω3` | Target-occupancy deviation, `Cocc` | 0.15 |
 | `ω4` | Dwell/stop-adjustment cost, `Cstop` | 0.15 |
 
-Each weight was perturbed by ±25%, with the other three weights renormalized so that the vector continued to sum to one. Across the eight perturbations, headway MARD remained between 0.71% and 2.05%, the maximum period-level deviation did not exceed 0.79 min, and the change in daily departures stayed between −0.8 and +1.0 trains. Passenger-waiting and operating-cost changes remained within −0.71% to +1.89% and −1.36% to +1.69%, respectively; every tested setting retained 100% feasibility. The largest schedule response occurred for `ω4`, indicating that the stop-adjustment term is the most influential weight within this local test range. See the [objective-weight robustness results](datas/4-9-2.xlsx).
+Each weight was perturbed by ±25%, with the other three weights renormalized so that the vector continued to sum to one. Across the eight perturbations, headway MARD remained between 0.71% and 2.05%, the maximum period-level deviation did not exceed 0.79 min, and the change in daily departures stayed between −0.8 and +1.0 trains. Passenger-waiting and operating-cost changes remained within −0.71% to +1.89% and −1.36% to +1.69%, respectively; every tested setting retained 100% feasibility. The largest schedule response occurred for `ω4`, indicating that the stop-adjustment term is the most influential weight within this local test range. See the [objective-weight robustness results](data/4-9-2.xlsx).
 
 | Symbol | Penalized constraint | Baseline value |
 |---|---|---:|
@@ -131,7 +131,7 @@ Each weight was perturbed by ±25%, with the other three weights renormalized so
 | `λ4` | Demand coverage | 1,800 |
 | `λ5` | Safe headway | 5,000 |
 
-Each penalty coefficient was independently scaled by ×0.5 and ×2.0. Headway MARD remained between 0.66% and 1.72%, all ten settings retained 100% feasibility, and runtime changed by −12.91% to +0.87% relative to the baseline. Mean constraint violation remained at or below 0.001775 and the largest observed single violation was 0.00858. These results support local robustness over the tested scaling range, but do not imply invariance to arbitrary penalty values. See the [penalty-coefficient robustness results](datas/4-10-2.xlsx).
+Each penalty coefficient was independently scaled by ×0.5 and ×2.0. Headway MARD remained between 0.66% and 1.72%, all ten settings retained 100% feasibility, and runtime changed by −12.91% to +0.87% relative to the baseline. Mean constraint violation remained at or below 0.001775 and the largest observed single violation was 0.00858. These results support local robustness over the tested scaling range, but do not imply invariance to arbitrary penalty values. See the [penalty-coefficient robustness results](data/4-10-2.xlsx).
 
 ### Boarding and alighting dwell-response coefficients
 
@@ -141,7 +141,7 @@ The manuscript notation uses `η1` and `η2`—sometimes visually read as `n1` a
   <img src="images/supplement/S8.png" alt="Operational responses across the eta1-eta2 grid" width="92%">
 </p>
 
-Across the plotted grid, average dwell time increases smoothly from 3.370 to 3.752 min as the two coefficients rise. Maximum capacity utilization remains within 89.58%–93.75%, while daily train supply stays in the narrow range of 58.2–60.4 runs. The one-factor ±20% experiment is similarly stable for `η1` in both directions and for a 20% decrease in `η2`: headway MARD remains below 2.70% and all cases are feasible. In contrast, increasing `η2` by 20% raises the composite objective to `3.879683 ± 5.735017`, identifying a local sensitivity to a stronger alighting-time response. See the [coefficient-robustness results](datas/4-8-2.xlsx).
+Across the plotted grid, average dwell time increases smoothly from 3.370 to 3.752 min as the two coefficients rise. Maximum capacity utilization remains within 89.58%–93.75%, while daily train supply stays in the narrow range of 58.2–60.4 runs. The one-factor ±20% experiment is similarly stable for `η1` in both directions and for a 20% decrease in `η2`: headway MARD remains below 2.70% and all cases are feasible. In contrast, increasing `η2` by 20% raises the composite objective to `3.879683 ± 5.735017`, identifying a local sensitivity to a stronger alighting-time response. See the [coefficient-robustness results](data/4-8-2.xlsx).
 
 ### Supplementary statistical, ablation, and transfer evidence
 
@@ -249,7 +249,7 @@ SHDMS-ABC/
 │   ├── NST-HSR/               # Main timetable, demand-factor, and capacity workbooks
 │   ├── Supplement/            # Four generalization-oriented railway datasets
 │   └── DATASET.md             # Dataset definition and download information
-├── datas/                     # 35 curated single-sheet result workbooks
+├── data/                      # Main and supplementary single-sheet result workbooks
 ├── images/
 │   ├── png/                   # Raster previews for GitHub and the manuscript
 │   ├── pdf/                   # Publication-ready vector figures
@@ -277,7 +277,7 @@ See [`datasets/DATASET.md`](datasets/DATASET.md) for the field-level description
 
 ### Result workbooks
 
-The [`datas/`](datas) directory contains 35 Excel workbooks organized by manuscript experiment number. Each workbook contains exactly one worksheet (`Sheet1`), uses English headers, contains experimental data only, and excludes environment or configuration metadata. Numbered suffixes such as `4-7-2.xlsx` separate additional result tables belonging to the same experiment group.
+The [`data/`](data) directory contains 35 main-result Excel workbooks organized by manuscript experiment number. Its [`supplement/`](data/supplement) subdirectory contains 23 supplementary workbooks organized by section number (`S1`–`S10`). Each workbook contains exactly one worksheet (`Sheet1`), uses English headers, contains experimental data only, and excludes environment or configuration metadata. Numbered suffixes such as `4-7-2.xlsx` and `S5-2.xlsx` distinguish additional result tables within the same experiment group.
 
 ### Figures
 
@@ -380,7 +380,7 @@ python experiments/4-3_multiscenario_performance.py \
   --output outputs/4-3.csv
 ~~~
 
-The experiment writes an aggregate CSV and, where applicable, a sibling raw-run CSV. Use an explicit `--output` path to keep reproduced files separate from the curated Excel workbooks in [`datas/`](datas).
+The experiment writes an aggregate CSV and, where applicable, a sibling raw-run CSV. Use an explicit `--output` path to keep reproduced files separate from the curated Excel workbooks in [`data/`](data).
 
 <details>
 <summary><strong>Common command-line options</strong></summary>
