@@ -199,7 +199,7 @@ Taken together, the supplementary results position SHDMS-ABC as a competitive, f
 | Penalty coefficients | `(λ1, λ2, λ3, λ4, λ5)` | `(2500, 300, 1200, 1800, 5000)` |
 | Success-history update rate | `ρH` | 0.30 |
 | Historical-credit influence | `α` | 1.35 |
-| State-matching influence | `βw` | 1.05 |
+| State-matching influence | `β` | 1.05 |
 | Diversity thresholds | `(τD,low, τD,high)` | `(0.08, 0.22)` |
 | Restart threshold | `LR` | 30 |
 | Minimum fallback credit | `hmin` | 0.05 |
