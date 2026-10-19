@@ -18,7 +18,7 @@
 
 | Parameter | Symbol | Setting |
 |---|---|---:|
-| Independent runs, benchmark suite (`data/` workbooks) | `N_run` | 10 main · 5 robustness · 50 cross-line |
+| Independent runs, benchmark suite (`data/` CSV files) | `N_run` | 10 main · 5 robustness · 50 cross-line |
 | Independent runs, revision re-runs (`data/revision/`) | `N_run` | 30 fair comparison · 30 demand sensitivity · 30 cross-line · 50 ablation |
 | Initial population size | `SN` | 30 |
 | Target number of objective-function evaluations | `NFE_target` | 6000 |

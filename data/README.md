@@ -1,10 +1,10 @@
-# Manuscript-Ordered CSV Mirror (`D-1.csv` ... `D-58.csv`)
+# Result Data (`D-1.csv` ... `D-58.csv`)
 
-All 58 result workbooks of [`data/`](..) (35 main-result + 23 supplementary), converted to UTF-8 CSV and renumbered in the order their tables appear in the manuscript: main-text tables first (Tables 7-20 of the revised manuscript), then the supplementary sections (S1-S10). The original `.xlsx` workbooks remain unchanged alongside; this mirror exists for quick text-level access.
+The 58 curated result tables of this repository (35 main-text + 23 supplementary), stored as UTF-8 CSV and numbered in the order their tables appear in the manuscript: main-text tables first (Tables 7-20 of the revised manuscript), then the supplementary sections (S1-S10). The historical Excel workbooks (`4-*.xlsx`, `S*.xlsx`) were replaced by these CSV files; the `Source workbook` column below retains the historical file name for provenance.
 
 Note on robustness blocks: the current manuscript orders them as Table 16 (objective weights) - Table 17 (penalties) - Table 18 (dwell coefficients), which differs from the legacy experiment numbering (`4-8` = dwell, `4-9` = weights, `4-10` = penalties); the `D-` numbering follows the manuscript.
 
-| CSV | Source workbook | Manuscript anchor | Data rows | Content |
+| CSV | Source workbook (historical) | Manuscript anchor | Data rows | Content |
 |---|---|---|---|---|
 | [`D-1.csv`](D-1.csv) | `4-2.xlsx` | Table 7 | 8 | Operation performance: original vs optimized metrics |
 | [`D-2.csv`](D-2.csv) | `4-1.xlsx` | Table 8 | 7 | Original vs optimized departures and headways by period |
@@ -65,10 +65,10 @@ Note on robustness blocks: the current manuscript orders them as Table 16 (objec
 | [`D-57.csv`](D-57.csv) | `supplement/S10-2.xlsx` | Table S10 | 10 | Dataset field dictionary: station-period demand |
 | [`D-58.csv`](D-58.csv) | `supplement/S10-3.xlsx` | Table S10 | 7 | Dataset field dictionary: station attributes |
 
-Revision re-run outputs (Tables 6, 12, 13, 15, 20 sources) are machine-readable JSON/CSV in [`data/revision/`](../revision) and are not duplicated here.
+Revision re-run outputs (Tables 6, 12, 13, 15, 20 sources) are machine-readable JSON/CSV in [`revision/`](revision) and are not duplicated here.
 
 **Known caveats (documented for reproducibility):**
-1. `D-1.csv` (4-2.xlsx) reports the submission-version operational metrics of the 55-service plan (objective 2.9169, utilization 90.28%); the revised manuscript Table 7 uses the published 57-service plan with objective 6.8920 and utilization 93.75% - see `data/revision/` for the revised source.
-2. `D-31.csv` (4-11-2.xlsx) NST-HSR row (1.8619 +/- 3.4068) is the submission-version 10-run statistic; the revised manuscript Table 20 NST-HSR rows follow the unified-protocol 30-run re-run (see `data/revision/cross_line_baseline_vs_optimized.json`).
+1. `D-1.csv` (4-2.xlsx) reports the submission-version operational metrics of the 55-service plan (objective 2.9169, utilization 90.28%); the revised manuscript Table 7 uses the published 57-service plan with objective 6.8920 and utilization 93.75% - see `revision/` for the revised source.
+2. `D-31.csv` (4-11-2.xlsx) NST-HSR row (1.8619 +/- 3.4068) is the submission-version 10-run statistic; the revised manuscript Table 20 NST-HSR rows follow the unified-protocol 30-run re-run (see `revision/cross_line_baseline_vs_optimized.json`).
 3. The 4-5 series (D-9/D-10/D-11) and S3 (D-38) contain identical significance-test content; both are retained as found.
-4. Tables 6, 9, 12, 13, 15, and 19 of the revised manuscript draw on `data/revision/` outputs and dataset workbooks rather than these 58 workbooks.
+4. Tables 6, 9, 12, 13, 15, and 19 of the revised manuscript draw on `revision/` outputs and dataset workbooks rather than these 58 tables.

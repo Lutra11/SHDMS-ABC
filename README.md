@@ -26,7 +26,7 @@
 
 SHDMS-ABC is a population-based optimization method for demand-responsive intercity railway timetabling. It optimizes time-period headways and station dwell times while balancing operating cost, passenger waiting cost, load-factor deviation, stop adjustment, and operational constraints.
 
-This repository provides the complete SHDMS-ABC implementation, 18 comparison algorithms, standardized railway datasets, data-preprocessing utilities, 11 experiment entry points, 35 curated result workbooks, an eight-file machine-readable re-run package from the manuscript revision, and the experimental figures used in the project. Every experiment uses the same dataset loaders, objective definition, constraint treatment, and budget-conversion utilities.
+This repository provides the complete SHDMS-ABC implementation, 18 comparison algorithms, standardized railway datasets, data-preprocessing utilities, 11 experiment entry points, 58 curated result tables (`D-1.csv` … `D-58.csv`, manuscript-ordered), an eight-file machine-readable re-run package from the manuscript revision, and the experimental figures used in the project. Every experiment uses the same dataset loaders, objective definition, constraint treatment, and budget-conversion utilities.
 
 ## At a glance
 
@@ -132,7 +132,7 @@ The composite objective combines four normalized operating terms and five constr
 | `ω3` | Target-occupancy deviation, `Cocc` | 0.15 |
 | `ω4` | Dwell/stop-adjustment cost, `Cstop` | 0.15 |
 
-Each weight was perturbed by ±25%, with the other three weights renormalized so that the vector continued to sum to one. Across the eight perturbations, headway MARD remained between 0.71% and 2.05%, the maximum period-level deviation did not exceed 0.79 min, and the change in daily departures stayed between −0.8 and +1.0 trains. Passenger-waiting and operating-cost changes remained within −0.71% to +1.89% and −1.36% to +1.69%, respectively; every tested setting retained 100% feasibility. The largest schedule response occurred for `ω4`, indicating that the stop-adjustment term is the most influential weight within this local test range. See the [objective-weight robustness results](data/4-9-2.xlsx).
+Each weight was perturbed by ±25%, with the other three weights renormalized so that the vector continued to sum to one. Across the eight perturbations, headway MARD remained between 0.71% and 2.05%, the maximum period-level deviation did not exceed 0.79 min, and the change in daily departures stayed between −0.8 and +1.0 trains. Passenger-waiting and operating-cost changes remained within −0.71% to +1.89% and −1.36% to +1.69%, respectively; every tested setting retained 100% feasibility. The largest schedule response occurred for `ω4`, indicating that the stop-adjustment term is the most influential weight within this local test range. See the [objective-weight robustness results](data/D-22.csv).
 
 | Symbol | Penalized constraint | Baseline value |
 |---|---|---:|
@@ -142,7 +142,7 @@ Each weight was perturbed by ±25%, with the other three weights renormalized so
 | `λ4` | Demand coverage | 1,800 |
 | `λ5` | Safe headway | 5,000 |
 
-Each penalty coefficient was independently scaled by ×0.5 and ×2.0. Headway MARD remained between 0.66% and 1.72%, all ten settings retained 100% feasibility, and runtime changed by −12.91% to +0.87% relative to the baseline. Mean constraint violation remained at or below 0.001775 and the largest observed single violation was 0.00858. These results support local robustness over the tested scaling range, but do not imply invariance to arbitrary penalty values. See the [penalty-coefficient robustness results](data/4-10-2.xlsx).
+Each penalty coefficient was independently scaled by ×0.5 and ×2.0. Headway MARD remained between 0.66% and 1.72%, all ten settings retained 100% feasibility, and runtime changed by −12.91% to +0.87% relative to the baseline. Mean constraint violation remained at or below 0.001775 and the largest observed single violation was 0.00858. These results support local robustness over the tested scaling range, but do not imply invariance to arbitrary penalty values. See the [penalty-coefficient robustness results](data/D-25.csv).
 
 ### Boarding and alighting dwell-response coefficients
 
@@ -152,7 +152,7 @@ The manuscript notation uses `η1` and `η2`—sometimes visually read as `n1` a
   <img src="images/supplement/S8.png" alt="Operational responses across the eta1-eta2 grid" width="92%">
 </p>
 
-Across the plotted grid, average dwell time increases smoothly from 3.370 to 3.752 min as the two coefficients rise. Maximum capacity utilization remains within 89.58%–93.75%, while daily train supply stays in the narrow range of 58.2–60.4 runs. The one-factor ±20% experiment is similarly stable for `η1` in both directions and for a 20% decrease in `η2`: headway MARD remains below 2.70% and all cases are feasible. In contrast, increasing `η2` by 20% raises the composite objective to `3.879683 ± 5.735017`, identifying a local sensitivity to a stronger alighting-time response. See the [coefficient-robustness results](data/4-8-2.xlsx).
+Across the plotted grid, average dwell time increases smoothly from 3.370 to 3.752 min as the two coefficients rise. Maximum capacity utilization remains within 89.58%–93.75%, while daily train supply stays in the narrow range of 58.2–60.4 runs. The one-factor ±20% experiment is similarly stable for `η1` in both directions and for a 20% decrease in `η2`: headway MARD remains below 2.70% and all cases are feasible. In contrast, increasing `η2` by 20% raises the composite objective to `3.879683 ± 5.735017`, identifying a local sensitivity to a stronger alighting-time response. See the [coefficient-robustness results](data/D-28.csv).
 
 ### Supplementary statistical, ablation, and transfer evidence
 
@@ -200,7 +200,7 @@ Taken together, the supplementary results position SHDMS-ABC as a competitive, f
 
 | Parameter | Symbol | Setting |
 |---|---|---:|
-| Independent runs, benchmark suite ([`data/`](data) workbooks) | `N_run` | 10 main · 5 robustness · 50 cross-line |
+| Independent runs, benchmark suite ([`data/`](data) CSV files) | `N_run` | 10 main · 5 robustness · 50 cross-line |
 | Independent runs, revision re-runs ([`data/revision/`](data/revision)) | `N_run` | 30 fair comparison · 30 demand sensitivity · 30 cross-line · 50 ablation |
 | Population size | `SN` | 30 |
 | Target objective evaluations | `NFE_target` | 6,000 |
@@ -260,10 +260,9 @@ SHDMS-ABC/
 │   ├── NST-HSR/               # Main timetable, demand-factor, and capacity workbooks
 │   ├── Supplement/            # Four generalization-oriented railway datasets
 │   └── DATASET.md             # Dataset definition and download information
-├── data/                      # Main and supplementary single-sheet result workbooks
-│   ├── csv/                    # Manuscript-ordered CSV mirror (D-1.csv ... D-58.csv)
-│   ├── supplement/             # Supplementary result workbooks (S1-S10)
-│   └── revision/               # Machine-readable revision re-run outputs
+├── data/                      # Manuscript-ordered result CSVs (D-1.csv ... D-58.csv)
+│   ├── revision/               # Machine-readable revision re-run outputs
+│   └── README.md               # D-1 ... D-58 index (source, anchor, rows)
 ├── images/
 │   ├── png/                   # Raster previews for GitHub and the manuscript
 │   ├── pdf/                   # Publication-ready vector figures
@@ -273,7 +272,7 @@ SHDMS-ABC/
 └── README.md
 ~~~
 
-## Datasets and result workbooks
+## Datasets and result data
 
 ### Railway datasets
 
@@ -289,9 +288,9 @@ The main NST-HSR data are constructed from publicly available railway informatio
 
 See [`datasets/DATASET.md`](datasets/DATASET.md) for the field-level description and external research-data archive.
 
-### Result workbooks
+### Result data (CSV)
 
-The [`data/`](data) directory contains 35 main-result Excel workbooks organized by manuscript experiment number. Its [`supplement/`](data/supplement) subdirectory contains 23 supplementary workbooks organized by section number (`S1`–`S10`). Each workbook contains exactly one worksheet (`Sheet1`), uses English headers, contains experimental data only, and excludes environment or configuration metadata. Numbered suffixes such as `4-7-2.xlsx` and `S5-2.xlsx` distinguish additional result tables within the same experiment group. The [`csv/`](data/csv) subdirectory is a manuscript-ordered CSV mirror of all 58 workbooks, renumbered `D-1.csv` … `D-58.csv` in the order their tables appear in the revised manuscript (robustness blocks follow the manuscript order Table 16 weights → Table 17 penalties → Table 18 dwell coefficients); see its [index](data/csv/README.md) for the full mapping. The [`revision/`](data/revision) subdirectory collects the eight machine-readable outputs of the manuscript-revision re-runs (fair comparison, ablation, demand sensitivity, cross-line, constraint audit, and passenger perspective; see [Unified-protocol re-run](#unified-protocol-re-run-manuscript-revision)).
+The [`data/`](data) directory holds the 58 curated result tables as UTF-8 CSV files, numbered `D-1.csv` … `D-58.csv` in the order their tables appear in the revised manuscript: main-text tables first (D-1–D-35; the robustness blocks follow the manuscript order Table 16 weights → Table 17 penalties → Table 18 dwell coefficients), then the supplementary sections S1–S10 (D-36–D-58). Each file has a single header row, English column names, experimental data only, and no environment or configuration metadata. See the [index](data/README.md) for the full mapping — historical source workbook, manuscript anchor, row counts, and per-file content. The [`revision/`](data/revision) subdirectory collects the eight machine-readable outputs of the manuscript-revision re-runs (fair comparison, ablation, demand sensitivity, cross-line, constraint audit, and passenger perspective; see [Unified-protocol re-run](#unified-protocol-re-run-manuscript-revision)).
 
 ### Figures
 
@@ -394,7 +393,7 @@ python experiments/4-3_multiscenario_performance.py \
   --output outputs/4-3.csv
 ~~~
 
-The experiment writes an aggregate CSV and, where applicable, a sibling raw-run CSV. Use an explicit `--output` path to keep reproduced files separate from the curated Excel workbooks in [`data/`](data).
+The experiment writes an aggregate CSV and, where applicable, a sibling raw-run CSV. Use an explicit `--output` path to keep reproduced files separate from the curated result CSVs in [`data/`](data).
 
 <details>
 <summary><strong>Common command-line options</strong></summary>
