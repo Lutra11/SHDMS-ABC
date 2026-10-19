@@ -1,0 +1,162 @@
+[
+  {
+    "line": "New City Express",
+    "baseline": {
+      "avg_waiting_min": 15.0,
+      "avg_load_pct": 22.5,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 57024.0,
+      "revenue": 45668.57142857143,
+      "demand_coverage_pct": 100.0,
+      "objective": 240.65352160026097
+    },
+    "optimized": {
+      "avg_waiting_min": 15.0,
+      "avg_load_pct": 22.5,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 57024.0,
+      "revenue": 45668.57142857143,
+      "demand_coverage_pct": 100.0,
+      "objective": 240.79706110615234
+    },
+    "improvement_objective_pct": 0.0596457117838465
+  },
+  {
+    "line": "Wuxiao Intercity",
+    "baseline": {
+      "avg_waiting_min": 15.0,
+      "avg_load_pct": 31.5,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 35712.0,
+      "revenue": 35280.0,
+      "demand_coverage_pct": 100.0,
+      "objective": 110.91003106058965
+    },
+    "optimized": {
+      "avg_waiting_min": 14.907345252825955,
+      "avg_load_pct": 31.5,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 35712.0,
+      "revenue": 35280.0,
+      "demand_coverage_pct": 100.0,
+      "objective": 110.9757484131475
+    },
+    "improvement_objective_pct": 0.05925284839380595
+  },
+  {
+    "line": "Suishen Intercity",
+    "baseline": {
+      "avg_waiting_min": 15.000000000000004,
+      "avg_load_pct": 44.99999999999999,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 42048.0,
+      "revenue": 40114.28571428571,
+      "demand_coverage_pct": 100.0,
+      "objective": 44.33363915028073
+    },
+    "optimized": {
+      "avg_waiting_min": 14.845305487073023,
+      "avg_load_pct": 44.99999999999999,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 42048.0,
+      "revenue": 40114.28571428571,
+      "demand_coverage_pct": 100.0,
+      "objective": 44.82523687061051
+    },
+    "improvement_objective_pct": 1.1088593892853609
+  },
+  {
+    "line": "Beijing Sub-Center Line",
+    "baseline": {
+      "avg_waiting_min": 15.0,
+      "avg_load_pct": 27.0,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 36979.200000000004,
+      "revenue": 14256.0,
+      "demand_coverage_pct": 100.0,
+      "objective": 600.7982652724997
+    },
+    "optimized": {
+      "avg_waiting_min": 15.0,
+      "avg_load_pct": 27.0,
+      "max_capacity_utilization_pct": 41.66666666666667,
+      "departures_total": 32,
+      "departures_per_period": [
+        4,
+        4,
+        8,
+        6,
+        6,
+        4
+      ],
+      "run_cost": 36979.200000000004,
+      "revenue": 14256.0,
+      "demand_coverage_pct": 100.0,
+      "objective": 600.9010365855196
+    },
+    "improvement_objective_pct": 0.017105793901257403
+  }
+]

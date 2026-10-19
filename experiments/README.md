@@ -18,9 +18,8 @@
 
 | Parameter | Symbol | Setting |
 |---|---|---:|
-| Independent runs for the main experiments | `N_run` | 10 |
-| Independent runs for robustness experiments | `N_run,robustness` | 5 |
-| Independent runs for cross-line experiments | `N_run,cross-line` | 50 |
+| Independent runs, benchmark suite (`data/` workbooks) | `N_run` | 10 main · 5 robustness · 50 cross-line |
+| Independent runs, revision re-runs (`data/revision/`) | `N_run` | 30 fair comparison · 30 demand sensitivity · 30 cross-line · 50 ablation |
 | Initial population size | `SN` | 30 |
 | Target number of objective-function evaluations | `NFE_target` | 6000 |
 | Initialization method | — | Uniform random initialization within the decision space |

@@ -26,7 +26,7 @@
 
 SHDMS-ABC is a population-based optimization method for demand-responsive intercity railway timetabling. It optimizes time-period headways and station dwell times while balancing operating cost, passenger waiting cost, load-factor deviation, stop adjustment, and operational constraints.
 
-This repository provides the complete SHDMS-ABC implementation, 18 comparison algorithms, standardized railway datasets, data-preprocessing utilities, 11 experiment entry points, 35 curated result workbooks, and the experimental figures used in the project. Every experiment uses the same dataset loaders, objective definition, constraint treatment, and budget-conversion utilities.
+This repository provides the complete SHDMS-ABC implementation, 18 comparison algorithms, standardized railway datasets, data-preprocessing utilities, 11 experiment entry points, 35 curated result workbooks, an eight-file machine-readable re-run package from the manuscript revision, and the experimental figures used in the project. Every experiment uses the same dataset loaders, objective definition, constraint treatment, and budget-conversion utilities.
 
 ## At a glance
 
@@ -110,6 +110,17 @@ The optimized plan responds to time-varying demand instead of changing every per
 
 The repository retains both optimization-space evidence and operational metrics. Objective values are therefore interpreted together with feasibility, passenger waiting, train supply, load factor, capacity utilization, runtime, and convergence behavior.
 
+### Unified-protocol re-run (manuscript revision)
+
+The manuscript revision re-ran the headline comparisons under a unified matched protocol — population 24, cycle budget 120, abandonment limit 40 (≈6,600 evaluations per SHDMS-ABC run), 30 independent runs per algorithm per scenario (seeds 2020–2049), and 50 runs for the ablation (seeds 5000–5049). The machine-readable outputs are collected in [`data/revision/`](data/revision):
+
+- **Fair comparison** — 9 algorithms × 4 scenarios × 30 runs. SHDMS-ABC attains the best mean score in every scenario with the smallest spread: S1 `1.0353 ± 0.1624`, S2 `9.3686 ± 0.0373`, S3 `77.3033 ± 0.0283`, S4 `130.9770 ± 0.0568`. See [`fair_algorithm_comparison.json`](data/revision/fair_algorithm_comparison.json).
+- **Ablation re-run** — 50 runs per variant. The directed-scout restart never triggers within the budget (0 restarts in 50 runs), so the w/o-RS variant is numerically identical to the complete algorithm; removing success-history gives Cohen's `d = −0.32` (`p = 0.065`, bootstrap 95% CI containing zero) and neutralizing state-aware scheduling gives `d = −0.02` (`p = 0.811`). See [`ablation_rerun_statistics.json`](data/revision/ablation_rerun_statistics.json).
+- **Demand sensitivity** — 5 demand levels (δ = 0.8–1.2) × 30 runs. Re-optimized plans retain 100% demand coverage through δ = 1.0, 99.9% at δ = 1.1, and 98.3% at δ = 1.2. See [`demand_sensitivity.json`](data/revision/demand_sensitivity.json).
+- **Cross-line baseline vs. optimized** — 30 runs. On the four supplementary lines the optimizer holds the 32-train reference pattern with objectives within 1.2% of the baseline (0.02%–1.11%); the NST-HSR rows follow the manuscript's 57-service plan. See [`cross_line_baseline_vs_optimized.json`](data/revision/cross_line_baseline_vs_optimized.json).
+- **Constraint audit** — the optimized plan reports zero violations across all five constraint families (residual load violation 1.44 × 10⁻⁴), against the original timetable's demand deficit of 0.0217 and load violation of 0.0748; maximum capacity utilization rises from 83.33% to 93.75%. See [`constraint_violation_audit.json`](data/revision/constraint_violation_audit.json).
+- **Passenger perspective** — waiting time −1.91%, demand coverage 97.06% → 100% (+3.03%), revenue +3.03%, operating cost unchanged. See [`passenger_perspective_comparison.json`](data/revision/passenger_perspective_comparison.json).
+
 ### Objective weights and constraint penalties
 
 The composite objective combines four normalized operating terms and five constraint-violation penalties. The baseline objective weights deliberately assign equal priority to railway operating cost and passenger waiting cost, while occupancy deviation and stop adjustment provide secondary regularization.
@@ -135,7 +146,7 @@ Each penalty coefficient was independently scaled by ×0.5 and ×2.0. Headway MA
 
 ### Boarding and alighting dwell-response coefficients
 
-The manuscript notation uses `η1` and `η2`—sometimes visually read as `n1` and `n2`—for the boarding- and alighting-demand contributions to reference dwell time. The supplementary response-surface experiment highlights `η1 = 0.0100` and `η2 = 0.0110` as its reference grid point and evaluates the operational response over a wider neighborhood.
+The manuscript notation uses `η1` and `η2`—sometimes visually read as `n1` and `n2`—for the boarding- and alighting-demand contributions to reference dwell time. The supplementary response-surface experiment highlights `η1 = 0.0100` and `η2 = 0.0110` as its reference grid point and evaluates the operational response over a wider neighborhood. The manuscript's calibrated baseline uses `η1 = 0.008` and `η2 = 0.006`; the robustness grid deliberately centers on the neighboring `0.0100/0.0110` reference point and reports the operational response around it, so the two values describe different experimental anchors rather than a contradiction.
 
 <p align="center">
   <img src="images/supplement/S8.png" alt="Operational responses across the eta1-eta2 grid" width="92%">
@@ -172,7 +183,7 @@ Across the plotted grid, average dwell time increases smoothly from 3.370 to 3.7
 </tr>
 </table>
 
-Taken together, the supplementary results position SHDMS-ABC as a competitive, feasible method rather than a universal winner. It ranks strongly in several scenarios and railway lines, while QGDECC or iLSHADE-RSP remains stronger in others. The ablation results are also mixed across datasets, which supports interpreting the adaptive mechanisms as an interacting system rather than claiming that every module improves every case independently.
+Taken together, the supplementary results position SHDMS-ABC as a competitive, feasible method rather than a universal winner. It ranks strongly in several scenarios and railway lines, while QGDECC or iLSHADE-RSP remains stronger in others. The ablation results are also mixed across datasets, which supports interpreting the adaptive mechanisms as an interacting system rather than claiming that every module improves every case independently. The manuscript-revision unified re-run additionally reports SHDMS-ABC attaining the best mean score with the smallest spread in every scenario under the matched protocol ([`data/revision/`](data/revision)).
 
 ## Experimental design
 
@@ -189,11 +200,11 @@ Taken together, the supplementary results position SHDMS-ABC as a competitive, f
 
 | Parameter | Symbol | Setting |
 |---|---|---:|
-| Independent runs for main comparisons | `N_run` | 10 |
-| Independent runs for robustness experiments | `N_run,robustness` | 5 |
-| Independent runs for cross-line experiments | `N_run,cross-line` | 50 |
+| Independent runs, benchmark suite ([`data/`](data) workbooks) | `N_run` | 10 main · 5 robustness · 50 cross-line |
+| Independent runs, revision re-runs ([`data/revision/`](data/revision)) | `N_run` | 30 fair comparison · 30 demand sensitivity · 30 cross-line · 50 ablation |
 | Population size | `SN` | 30 |
 | Target objective evaluations | `NFE_target` | 6,000 |
+| Unified re-run protocol (revision) | — | Population 24 · cycles 120 · limit 40 (≈6,600 evaluations per SHDMS-ABC run) |
 | Initialization | — | Uniform random initialization with optional seeded operating plans |
 | Objective weights | `(ω1, ω2, ω3, ω4)` | `(0.35, 0.35, 0.15, 0.15)` |
 | Penalty coefficients | `(λ1, λ2, λ3, λ4, λ5)` | `(2500, 300, 1200, 1800, 5000)` |
@@ -271,13 +282,13 @@ Every railway dataset follows the same three-workbook contract:
 | `2.*-Factors.xlsx` | Station-period level | Boarding/alighting demand and operating factors |
 | `3.Platform Capacity.xlsx` | Station level | Platform, line, dwell, buffer, and capacity parameters |
 
-The main NST-HSR data are constructed from publicly available railway information and standardized capacity assumptions. The four supplementary datasets combine public route/station information with simulation-calibrated operational fields. They are intended for controlled generalization experiments and should not be described as complete raw operating data released by railway authorities.
+The main NST-HSR data are constructed from publicly available railway information and standardized capacity assumptions. The four supplementary datasets combine public route/station information with simulation-calibrated operational fields. They are intended for controlled generalization experiments and should not be described as complete raw operating data released by railway authorities. All 15 workbooks (NST-HSR plus the four supplementary lines) are included in this repository under [`datasets/NST-HSR/`](datasets/NST-HSR) and [`datasets/Supplement/`](datasets/Supplement).
 
 See [`datasets/DATASET.md`](datasets/DATASET.md) for the field-level description and external research-data archive.
 
 ### Result workbooks
 
-The [`data/`](data) directory contains 35 main-result Excel workbooks organized by manuscript experiment number. Its [`supplement/`](data/supplement) subdirectory contains 23 supplementary workbooks organized by section number (`S1`–`S10`). Each workbook contains exactly one worksheet (`Sheet1`), uses English headers, contains experimental data only, and excludes environment or configuration metadata. Numbered suffixes such as `4-7-2.xlsx` and `S5-2.xlsx` distinguish additional result tables within the same experiment group.
+The [`data/`](data) directory contains 35 main-result Excel workbooks organized by manuscript experiment number. Its [`supplement/`](data/supplement) subdirectory contains 23 supplementary workbooks organized by section number (`S1`–`S10`). Each workbook contains exactly one worksheet (`Sheet1`), uses English headers, contains experimental data only, and excludes environment or configuration metadata. Numbered suffixes such as `4-7-2.xlsx` and `S5-2.xlsx` distinguish additional result tables within the same experiment group. The [`revision/`](data/revision) subdirectory collects the eight machine-readable outputs of the manuscript-revision re-runs (fair comparison, ablation, demand sensitivity, cross-line, constraint audit, and passenger perspective; see [Unified-protocol re-run](#unified-protocol-re-run-manuscript-revision)).
 
 ### Figures
 

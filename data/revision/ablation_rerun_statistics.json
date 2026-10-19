@@ -1,0 +1,62 @@
+{
+  "runs": 50,
+  "seeds": [
+    5000,
+    5049
+  ],
+  "protocol": "tuned SHDMS on improved_1 repaired-evaluation model, same as Table 12",
+  "variants": {
+    "full": {
+      "mean": 0.9518475384467432,
+      "std": 0.07257509451264302,
+      "best": 0.8343275699933141,
+      "directed_restarts_mean": 0.0,
+      "directed_restarts_min": 0,
+      "directed_restarts_max": 0
+    },
+    "no_success_history": {
+      "mean": 0.9294197330523076,
+      "std": 0.06931780528678139,
+      "best": 0.841076357866555
+    },
+    "no_state_scheduling": {
+      "mean": 0.950242981610158,
+      "std": 0.06597472210977373,
+      "best": 0.8627490874588334
+    },
+    "no_directed_scout": {
+      "mean": 0.9518475384467432,
+      "std": 0.07257509451264302,
+      "best": 0.8343275699933141
+    }
+  },
+  "statistics": {
+    "no_success_history": {
+      "cohens_d": -0.31603974965052206,
+      "wilcoxon_p": 0.064886242135481,
+      "boot95_mean_diff": [
+        -0.0492832915595897,
+        0.004487330381080034
+      ],
+      "mean_diff": -0.022427805394435563
+    },
+    "no_state_scheduling": {
+      "cohens_d": -0.023135926411440175,
+      "wilcoxon_p": 0.8109402812359416,
+      "boot95_mean_diff": [
+        -0.02679384328406407,
+        0.022948179386715523
+      ],
+      "mean_diff": -0.0016045568365852247
+    },
+    "no_directed_scout": {
+      "cohens_d": 0.0,
+      "wilcoxon_p": NaN,
+      "boot95_mean_diff": [
+        0.0,
+        0.0
+      ],
+      "mean_diff": 0.0
+    }
+  }
+}

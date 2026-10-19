@@ -22,8 +22,11 @@ The `Supplement` folder contains extended experimental datasets built following 
 
 Route terminals, station sequences and mileages for these supplementary datasets are compiled from public open‑source materials.
 
-## Dataset Download Link
-Google Drive: <https://drive.google.com/drive/folders/1mYckg3XB5ZU7fgRFuytrwnFazu1uvmuG>
+## Dataset Availability
+
+All dataset workbooks are included in this repository: [`datasets/NST-HSR/`](NST-HSR) (main dataset, 3 workbooks) and [`datasets/Supplement/`](Supplement) (four supplementary lines, 12 workbooks).
+
+External archive (Google Drive): <https://drive.google.com/drive/folders/1mYckg3XB5ZU7fgRFuytrwnFazu1uvmuG>
 
 
 

@@ -17,9 +17,9 @@ class SHDMSABCConfig:
     max_cycles: int = 300
     limit: int = 50
     seed: Optional[int] = None
-    alpha: float = 1.2
-    beta: float = 1.0
-    history_rate: float = 0.25
+    alpha: float = 1.35
+    beta: float = 1.05
+    history_rate: float = 0.30
     credit_floor: float = 0.05
     elite_ratio: float = 0.2
     improvement_reference: float = 1e-3
