@@ -4,26 +4,26 @@ from __future__ import annotations
 
 from typing import List, Optional, Sequence
 
-from .abc import StandardABC
-from .cma_es import CMAESOptimizer
+from .compared_algorithms.abc_family.abc import StandardABC
+from .compared_algorithms.esa_family.cma_es import CMAESOptimizer
 from .common import AlgorithmResult, Bounds, GenericConfig, ObjectiveFunction
-from .de import DEOptimizer
-from .gbest_abc import GbestABC
-from .gwo import GWOOptimizer
-from .hho import HHOOptimizer
-from .ilshade_rsp import ILSHADERSPOptimizer
-from .iabc import IABC
-from .jade import JADEOptimizer
-from .lshade import LSHADEOptimizer
-from .lr_cma_es import LRCMAESOptimizer
-from .mabc import MABC
-from .mirime import MIRIMEOptimizer
-from .meabc import MeABC
-from .pso import PSOOptimizer
-from .qgdecc import QGDECCOptimizer
-from .rime import RIMEOptimizer
-from .shdms_abc import run_shdms_abc
-from .sma import SMAOptimizer
+from .compared_algorithms.de_family.de import DEOptimizer
+from .compared_algorithms.abc_family.gbest_abc import GbestABC
+from .compared_algorithms.swarm_family.gwo import GWOOptimizer
+from .compared_algorithms.swarm_family.hho import HHOOptimizer
+from .compared_algorithms.de_family.ilshade_rsp import ILSHADERSPOptimizer
+from .compared_algorithms.abc_family.iabc import IABC
+from .compared_algorithms.de_family.jade import JADEOptimizer
+from .compared_algorithms.de_family.lshade import LSHADEOptimizer
+from .compared_algorithms.esa_family.lr_cma_es import LRCMAESOptimizer
+from .compared_algorithms.abc_family.mabc import MABC
+from .compared_algorithms.physics_family.mirime import MIRIMEOptimizer
+from .compared_algorithms.abc_family.meabc import MeABC
+from .compared_algorithms.swarm_family.pso import PSOOptimizer
+from .compared_algorithms.de_family.qgdecc import QGDECCOptimizer
+from .compared_algorithms.physics_family.rime import RIMEOptimizer
+from shdms_abc_suite.optimizer.shdms_abc import run_shdms_abc  # alias bridge, see algorithm/__init__.py
+from .compared_algorithms.swarm_family.sma import SMAOptimizer
 
 
 def optimize_algorithm(

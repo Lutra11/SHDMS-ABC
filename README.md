@@ -68,7 +68,7 @@ The implementation combines six interacting mechanisms:
 5. **Diversity-aware scout and restart control** for stagnant food sources and low-diversity populations.
 6. **Seeded initialization and local refinement** using baseline, heuristic, midpoint, and perturbed operating plans.
 
-The implementation is centered in [`algorithm/shdms_abc.py`](algorithm/shdms_abc.py). Common algorithm dispatch is provided by [`algorithm/registry.py`](algorithm/registry.py), and the railway optimization model is defined in [`experiments/common/model.py`](experiments/common/model.py).
+The implementation is organized in a layered layout. The proposed method lives in [`algorithm/shdms-abc/`](algorithm/shdms-abc/): the joint headway-dwell optimization model (Sections 3.1.1-3.1.4) in [`modeling/`](algorithm/shdms-abc/modeling/), the SHDMS-ABC optimizer (Section 3.2) in [`optimizer/`](algorithm/shdms-abc/optimizer/). The 18 comparison optimizers are grouped by family under [`algorithm/compared_algorithms/`](algorithm/compared_algorithms/). Uniform algorithm dispatch is provided by [`algorithm/registry.py`](algorithm/registry.py), and experiment scripts keep importing the `common.model` / `common.runtime` facades unchanged.
 
 ## Experimental results
 
@@ -250,9 +250,12 @@ See [`experiments/README.md`](experiments/README.md) for the compact experiment-
 
 ~~~text
 SHDMS-ABC/
-├── algorithm/                 # SHDMS-ABC and 18 comparison optimizers
+├── algorithm/
+│   ├── common.py/registry.py/    # Shared types + uniform dispatch entry point
+│   ├── shdms-abc/                # Proposed suite: modeling/ + optimizer/ (layered)
+│   └── compared_algorithms/      # 18 baselines in abc/de/esa/swarm/physics families
 ├── experiments/
-│   ├── common/                # Model, paths, runtime, I/O, robustness, and statistics
+│   ├── common/                # Runtime, I/O, robustness, and statistics (model re-exported)
 │   ├── data_process/          # Four ordered data-validation/export steps
 │   ├── 4-1_*.py ... 4-11_*.py
 │   └── README.md              # Experiment mapping and unified parameters
