@@ -1,0 +1,9 @@
+﻿Metric,Original Plan,Optimized Plan
+Operating Cost,282150,292050
+Passenger Waiting Cost,241641.7,239187.98
+Target Load-Factor Loss,4.0001,4.3141
+Stop Adjustment Cost,0,0
+Fare Revenue,446797.71,458014.76
+Average Load Factor (%),69.88,69.21
+Maximum Capacity Utilization (%),83.33,90.28
+Composite Objective Value,14.5905,2.9169

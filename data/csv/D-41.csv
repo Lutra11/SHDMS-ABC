@@ -1,0 +1,29 @@
+﻿Dataset,Method Variant,Mean ± SD,Mean Objective Difference,Median Objective Difference,Raw p-value,A12,Result
+New City Express,SHDMS-ABC,98.7508 ± 0.0000,N/A,N/A,N/A,N/A,Reference
+New City Express,w/o OW + SH,98.7508 ± 0.0000,0,0,1,0.5,Tie
+New City Express,w/o OW + DT,98.7508 ± 0.0000,0,0,1,0.5,Tie
+New City Express,w/o OW + RS,98.7508 ± 0.0000,0,0,1,0.5,Tie
+New City Express,w/o SH + DT,98.7508 ± 0.0000,0,0,1,0.5,Tie
+New City Express,w/o SH + RS,98.7508 ± 0.0000,0,0,1,0.5,Tie
+New City Express,w/o DT + RS,98.7508 ± 0.0000,0,0,1,0.5,Tie
+Wuxiao Intercity,SHDMS-ABC,130.4905 ± 0.0003,N/A,N/A,N/A,N/A,Reference
+Wuxiao Intercity,w/o OW + SH,130.4896 ± 0.0001,-0.0008,-0.001,0.035529,0.01,Loss
+Wuxiao Intercity,w/o OW + DT,130.4897 ± 0.0003,-0.0007,-0.0008,0.043298,0.06,Loss
+Wuxiao Intercity,w/o OW + RS,130.4896 ± 0.0001,-0.0008,-0.0009,0.035529,0.01,Loss
+Wuxiao Intercity,w/o SH + DT,130.4899 ± 0.0004,-0.0006,-0.0007,0.043298,0.12,Loss
+Wuxiao Intercity,w/o SH + RS,130.4896 ± 0.0000,-0.0009,-0.001,0.035529,0,Loss
+Wuxiao Intercity,w/o DT + RS,130.4900 ± 0.0004,-0.0005,-0.0004,0.043298,0.17,Loss
+Suishen Intercity,SHDMS-ABC,24.4238 ± 7.7325,N/A,N/A,N/A,N/A,Reference
+Suishen Intercity,w/o OW + SH,14.5810 ± 12.9505,-9.8428,-9.8321,0.166262,0.05,Tie
+Suishen Intercity,w/o OW + DT,14.5952 ± 12.9354,-9.8285,-12.3045,0.035529,0.05,Tie
+Suishen Intercity,w/o OW + RS,12.1177 ± 12.6941,-12.3061,-14.751,0.035529,0.04,Tie
+Suishen Intercity,w/o SH + DT,17.0614 ± 12.6594,-7.3624,-4.9379,0.166262,0.13,Tie
+Suishen Intercity,w/o SH + RS,9.6593 ± 11.8749,-14.7645,-12.3089,0.158361,0.05,Tie
+Suishen Intercity,w/o DT + RS,21.9616 ± 10.3425,-2.4622,-2.4933,0.035529,0.18,Loss
+Beijing Sub-Center,SHDMS-ABC,397.1413 ± 0.0000,N/A,N/A,N/A,N/A,Reference
+Beijing Sub-Center,w/o OW + SH,397.1413 ± 0.0000,0,0,1,0.5,Tie
+Beijing Sub-Center,w/o OW + DT,397.1413 ± 0.0000,0,0,1,0.5,Tie
+Beijing Sub-Center,w/o OW + RS,397.1413 ± 0.0000,0,0,1,0.5,Tie
+Beijing Sub-Center,w/o SH + DT,397.1413 ± 0.0000,0,0,1,0.5,Tie
+Beijing Sub-Center,w/o SH + RS,397.1413 ± 0.0000,0,0,1,0.5,Tie
+Beijing Sub-Center,w/o DT + RS,397.1413 ± 0.0000,0,0,1,0.5,Tie

@@ -1,0 +1,8 @@
+﻿No.,Field,English Explanation
+1,station_name,Name of the railway station.
+2,km,"Cumulative mileage position of the station along the railway corridor, measured in kilometres."
+3,platforms,Number of platforms available at the station.
+4,lines,Number of railway lines or tracks at the station.
+5,base_dwell_min,"Baseline train dwell time associated with the station, measured in minutes."
+6,platform_buffer_min,"Additional time reserved for platform occupation and operational safety, measured in minutes."
+7,line_flow_coeff,Dimensionless coefficient representing the throughput capacity of the station's railway lines.

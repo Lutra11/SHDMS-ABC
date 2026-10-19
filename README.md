@@ -261,6 +261,9 @@ SHDMS-ABC/
 │   ├── Supplement/            # Four generalization-oriented railway datasets
 │   └── DATASET.md             # Dataset definition and download information
 ├── data/                      # Main and supplementary single-sheet result workbooks
+│   ├── csv/                    # Manuscript-ordered CSV mirror (D-1.csv ... D-58.csv)
+│   ├── supplement/             # Supplementary result workbooks (S1-S10)
+│   └── revision/               # Machine-readable revision re-run outputs
 ├── images/
 │   ├── png/                   # Raster previews for GitHub and the manuscript
 │   ├── pdf/                   # Publication-ready vector figures
@@ -288,7 +291,7 @@ See [`datasets/DATASET.md`](datasets/DATASET.md) for the field-level description
 
 ### Result workbooks
 
-The [`data/`](data) directory contains 35 main-result Excel workbooks organized by manuscript experiment number. Its [`supplement/`](data/supplement) subdirectory contains 23 supplementary workbooks organized by section number (`S1`–`S10`). Each workbook contains exactly one worksheet (`Sheet1`), uses English headers, contains experimental data only, and excludes environment or configuration metadata. Numbered suffixes such as `4-7-2.xlsx` and `S5-2.xlsx` distinguish additional result tables within the same experiment group. The [`revision/`](data/revision) subdirectory collects the eight machine-readable outputs of the manuscript-revision re-runs (fair comparison, ablation, demand sensitivity, cross-line, constraint audit, and passenger perspective; see [Unified-protocol re-run](#unified-protocol-re-run-manuscript-revision)).
+The [`data/`](data) directory contains 35 main-result Excel workbooks organized by manuscript experiment number. Its [`supplement/`](data/supplement) subdirectory contains 23 supplementary workbooks organized by section number (`S1`–`S10`). Each workbook contains exactly one worksheet (`Sheet1`), uses English headers, contains experimental data only, and excludes environment or configuration metadata. Numbered suffixes such as `4-7-2.xlsx` and `S5-2.xlsx` distinguish additional result tables within the same experiment group. The [`csv/`](data/csv) subdirectory is a manuscript-ordered CSV mirror of all 58 workbooks, renumbered `D-1.csv` … `D-58.csv` in the order their tables appear in the revised manuscript (robustness blocks follow the manuscript order Table 16 weights → Table 17 penalties → Table 18 dwell coefficients); see its [index](data/csv/README.md) for the full mapping. The [`revision/`](data/revision) subdirectory collects the eight machine-readable outputs of the manuscript-revision re-runs (fair comparison, ablation, demand sensitivity, cross-line, constraint audit, and passenger perspective; see [Unified-protocol re-run](#unified-protocol-re-run-manuscript-revision)).
 
 ### Figures
 

@@ -1,0 +1,11 @@
+﻿No.,Field,English Explanation
+1,period_index,Numeric identifier of the operating time period.
+2,period_label,"Start and end times that delimit the operating period, expressed as HH:MM–HH:MM."
+3,station_name,Name of the station to which the demand attributes refer.
+4,boarding_demand,Estimated number of passengers expected to board at the station during the period.
+5,alighting_demand,Estimated number of passengers expected to alight at the station during the period.
+6,transfer_demand,Estimated number of passengers expected to transfer at the station during the period.
+7,commuter_share,Proportion of station-period demand attributable to commuter passengers.
+8,business_share,Proportion of station-period demand attributable to business passengers.
+9,leisure_share,Proportion of station-period demand attributable to leisure passengers.
+10,demand_uncertainty_cv,Coefficient of variation describing the relative fluctuation or uncertainty of station-period demand.

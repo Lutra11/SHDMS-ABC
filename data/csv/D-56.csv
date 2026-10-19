@@ -1,0 +1,41 @@
+﻿No.,Field,English Explanation
+1,Stop on the route,Name of the railway line or corridor on which the train service operates.
+2,Train code,Identifier assigned to a specific train service.
+3,station1,Origin station of the adjacent railway segment.
+4,station2,Destination station of the adjacent railway segment.
+5,distance(km),"Distance between the origin and destination stations of the segment, measured in kilometres."
+6,time1,"Scheduled departure time at the origin station, expressed as HH:MM."
+7,time2,"Scheduled arrival time at the destination station, expressed as HH:MM."
+8,interval(min),"Scheduled headway between adjacent train services in the same period, measured in minutes."
+9,Second Class Fare,"Second-class ticket fare for the corresponding segment or timetable record, expressed in CNY."
+10,First Class Fare,"First-class ticket fare for the corresponding segment or timetable record, expressed in CNY."
+11,operation_date,Calendar date to which the timetable record applies.
+12,day_type,"Classification of the operating date, such as weekday, weekend, or holiday."
+13,period_index,Numeric identifier of the operating time period.
+14,period_label,"Start and end times that delimit the operating period, expressed as HH:MM–HH:MM."
+15,peak_type,"Peak-condition category assigned to the operating period, such as Peak, Shoulder, or Off-peak."
+16,direction,"Direction of train travel along the railway corridor, determined from station mileage."
+17,station1_km,"Cumulative mileage position of the origin station along the railway corridor, measured in kilometres."
+18,station2_km,"Cumulative mileage position of the destination station along the railway corridor, measured in kilometres."
+19,running_time_min,"Travel time over the segment from departure to arrival, measured in minutes."
+20,scheduled_speed_kmh,"Scheduled average speed over the segment, calculated from segment distance and running time, in km/h."
+21,train_service_type,"Category describing the train service, such as intercity high-speed rail."
+22,rolling_stock_type,Model or type designation of the electric multiple unit operating the train service.
+23,carriages,Number of carriages in the trainset.
+24,train_capacity,"Maximum passenger capacity of one train, expressed in passengers."
+25,estimated_segment_boarding,Estimated number of passengers boarding for this train segment.
+26,estimated_segment_alighting,Estimated number of passengers alighting for this train segment.
+27,estimated_segment_flow,Estimated passenger load travelling on the adjacent railway segment.
+28,estimated_load_factor,Ratio of estimated segment passenger load to train capacity.
+29,passenger_km,"Passenger-distance volume, calculated as segment passenger flow multiplied by segment distance, in passenger-kilometres."
+30,estimated_second_class_revenue,"Estimated second-class passenger revenue for the segment, expressed in CNY."
+31,dwell_time_origin_min,"Train dwell time at the origin station before departure, measured in minutes."
+32,dwell_time_destination_min,"Train dwell time at the destination station after arrival, measured in minutes."
+33,platform_id,Identifier of the platform assigned to the train for the relevant station or segment.
+34,track_id,Identifier of the track assigned to the train for the relevant station or segment.
+35,electricity_kwh_est,"Estimated traction electricity consumed over the segment, measured in kWh."
+36,delay_risk_min,"Estimated magnitude of potential delay risk for the record, measured in minutes."
+37,crowding_risk,"Categorical level of passenger crowding risk, such as Low, Medium, or High."
+38,weather_condition,Representative weather category associated with the record.
+39,maintenance_window_flag,Y/N indicator showing whether the record is affected by a maintenance window.
+40,disruption_flag,Y/N indicator showing whether an external operational disruption is present.

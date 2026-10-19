@@ -1,0 +1,6 @@
+﻿Dataset,Average Waiting Time (min) ↓,Operating Cost (Cq) ↓,Average load factor/%,Maximum Capacity Utilization (%),Daily trains,Runtime (s) ↓
+NST-HSR,7.86,292050,69.56,93.12,59,2.393
+New City Express-S,15,57024,33.61,39.68,32,2.677
+Wuxiao Intercity-S,14.79,35712,29.81,41.67,32,2.64
+Suishen Intercity-S,14.47,43125.48,65.6,50.21,32.8,2.675
+Beijing Sub-Center-S,15,36979.2,31.01,43.86,32,2.653

@@ -1,0 +1,7 @@
+﻿Algorithm variant,Best Objective Value (F) ↓,Mean Objective ± SD ↓,Convergence Generation ↓,Runtime (s) ↓,Raw (p),Holm-adjusted (p),A12,Result
+SHDMS-ABC,0.8975,0.9731 ± 0.0687,24,0.357,—,—,—,Reference
+w/o OW,0.9372,1.5747 ± 1.8254,24,0.378,0.3081,0.9242,0.68,Tie
+w/o SH,0.9645,2.1605 ± 2.4277,24,0.367,0.1029,0.4117,0.77,Tie
+w/o DT,0.9398,0.9881 ± 0.0384,25,0.373,0.359,0.9242,0.64,Tie
+w/o RS,0.8975,0.9743 ± 0.0685,24,0.367,1,1,0.505,Tie
+Basic ABC,2.99,6.6303 ± 2.6683,25,0.262,0.0059,0.0296,1,Win

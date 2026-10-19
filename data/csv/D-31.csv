@@ -1,0 +1,6 @@
+﻿Dataset,Algorithm,Objective Value (Mean ± SD) ↓,Waiting time/min ↓,Operating Cost (Cq) ↓,Average Load Factor (%),Maximum Capacity Utilization (%),Daily trains,Runtime (s) ↓
+NST-HSR,SHDMS-ABC,1.8619 ± 3.4068,7.86,292050,69.56,93.12,59,2.393
+New City Express-S,SHDMS-ABC,259.7766 ± 0.0000,15,57024,33.61,39.68,32,2.677
+Wuxiao Intercity-S,SHDMS-ABC,341.7437 ± 0.0000,14.79,35712,29.81,41.67,32,2.64
+Suishen Intercity-S,SHDMS-ABC,12.8334 ± 19.5385,14.47,43125.48,65.6,50.21,32.8,2.675
+Beijing Sub-Center-S,SHDMS-ABC,822.3692 ± 0.0000,15,36979.2,31.01,43.86,32,2.653
