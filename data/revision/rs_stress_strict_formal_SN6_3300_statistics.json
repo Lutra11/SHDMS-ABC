@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "dataset": "NST-HSR",
+    "scenario": "S1 (base)",
+    "population": 6,
+    "limit": 40,
+    "cycles_setting": 3300,
+    "evaluations_per_run": 6600,
+    "runs_per_variant": 50,
+    "seeds": [
+      5000,
+      5049
+    ],
+    "bootstrap_resamples": 100000,
+    "bootstrap_seed": 20261026,
+    "difference_definition": "w/o RS minus complete; positive favors complete",
+    "wilcoxon": "two-sided exact sign-permutation signed-rank test",
+    "rs_ablation": "uniform random scout replaces the directed scout candidate"
+  },
+  "variants": {
+    "full": {
+      "label": "SHDMS-ABC (complete)",
+      "best_observed": 1.16413781245387,
+      "mean": 1.445566795090316,
+      "sample_sd": 0.15345741053526255,
+      "restart_triggered_runs": 0,
+      "directed_restarts_total": 0,
+      "mean_restarts_per_run": 0.0,
+      "max_trial_counter_range": [
+        7,
+        21
+      ]
+    },
+    "wo_rs": {
+      "label": "SHDMS-ABC w/o RS (random scout)",
+      "best_observed": 1.16413781245387,
+      "mean": 1.445566795090316,
+      "sample_sd": 0.15345741053526255,
+      "restart_triggered_runs": 0,
+      "directed_restarts_total": 0,
+      "mean_restarts_per_run": 0.0,
+      "max_trial_counter_range": [
+        7,
+        21
+      ]
+    }
+  },
+  "comparison": {
+    "mean_difference_wo_rs_minus_complete": 0.0,
+    "relative_difference_percent": 0.0,
+    "bootstrap_95_ci": [
+      0.0,
+      0.0
+    ],
+    "wilcoxon_raw_p": 1.0,
+    "wilcoxon_nonzero_pairs": 0,
+    "degenerate_all_zero": true,
+    "complete_wins": 0,
+    "complete_losses": 0,
+    "ties": 50,
+    "complete_win_proportion_all_runs": 0.0,
+    "triggered_runs_full": 0,
+    "triggered_runs_wo_rs": 0,
+    "complete_wins_among_triggered": 0,
+    "ties_among_triggered": 0,
+    "triggered_indices_seeds": [],
+    "triggered_subset_mean_difference": null
+  }
+}

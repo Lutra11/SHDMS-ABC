@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "protocol": {
+    "dataset": "NST-HSR",
+    "scenario": "S1 (base)",
+    "population": 4,
+    "limit": 40,
+    "cycles_setting": 3300,
+    "evaluations_per_run": 6600,
+    "runs_per_variant": 50,
+    "seeds": [
+      5000,
+      5049
+    ],
+    "bootstrap_resamples": 100000,
+    "bootstrap_seed": 20261026,
+    "difference_definition": "w/o RS minus complete; positive favors complete",
+    "wilcoxon": "two-sided exact sign-permutation signed-rank test",
+    "rs_ablation": "uniform random scout replaces the directed scout candidate"
+  },
+  "variants": {
+    "full": {
+      "label": "SHDMS-ABC (complete)",
+      "best_observed": 1.18093855810881,
+      "mean": 1.3756512561905612,
+      "sample_sd": 0.12271061580484892,
+      "restart_triggered_runs": 45,
+      "directed_restarts_total": 243,
+      "mean_restarts_per_run": 4.86,
+      "max_trial_counter_range": [
+        11,
+        44
+      ]
+    },
+    "wo_rs": {
+      "label": "SHDMS-ABC w/o RS (random scout)",
+      "best_observed": 1.176343154630093,
+      "mean": 1.390337905337799,
+      "sample_sd": 0.1399644723413662,
+      "restart_triggered_runs": 45,
+      "directed_restarts_total": 237,
+      "mean_restarts_per_run": 4.74,
+      "max_trial_counter_range": [
+        11,
+        44
+      ]
+    }
+  },
+  "comparison": {
+    "mean_difference_wo_rs_minus_complete": 0.01468664914723778,
+    "relative_difference_percent": 1.0676142722326218,
+    "bootstrap_95_ci": [
+      -0.01380480887783435,
+      0.043507397135317594
+    ],
+    "wilcoxon_raw_p": 0.20423811322626761,
+    "wilcoxon_nonzero_pairs": 45,
+    "degenerate_all_zero": false,
+    "complete_wins": 29,
+    "complete_losses": 16,
+    "ties": 5,
+    "complete_win_proportion_all_runs": 0.58,
+    "triggered_runs_full": 45,
+    "triggered_runs_wo_rs": 45,
+    "complete_wins_among_triggered": 29,
+    "ties_among_triggered": 0,
+    "triggered_indices_seeds": [
+      5000,
+      5001,
+      5002,
+      5003,
+      5004,
+      5005,
+      5006,
+      5007,
+      5008,
+      5009,
+      5010,
+      5011,
+      5012,
+      5013,
+      5014,
+      5015,
+      5016,
+      5018,
+      5019,
+      5020,
+      5021,
+      5022,
+      5023,
+      5025,
+      5026,
+      5027,
+      5029,
+      5030,
+      5031,
+      5032,
+      5033,
+      5034,
+      5035,
+      5036,
+      5037,
+      5038,
+      5039,
+      5040,
+      5042,
+      5044,
+      5045,
+      5046,
+      5047,
+      5048,
+      5049
+    ],
+    "triggered_subset_mean_difference": 0.01631849905248642
+  }
+}

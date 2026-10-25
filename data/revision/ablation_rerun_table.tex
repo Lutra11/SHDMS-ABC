@@ -1,0 +1,60 @@
+\begin{table*}[t]
+\color{red}
+\begin{threeparttable}
+\centering
+\caption{\textcolor{red}{Seed-matched ablation of SHDMS-ABC on the NST-HSR base scenario under the unified protocol (50 runs and 6,600 evaluations per run)}}
+\label{tab:ablation_study}
+\small
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{@{}l *{6}{>{\centering\arraybackslash}X} @{}}
+\toprule
+Algorithm variant
+& \makecell[c]{Best observed $F$\\$\downarrow$}
+& \makecell[c]{Mean $\pm$ SD\\$\downarrow$}
+& \makecell[c]{$\Delta\bar{F}$\\(95\% CI)}
+& \makecell[c]{Raw\\$p$}
+& \makecell[c]{Holm-adjusted\\$p$}
+& \makecell[c]{Restart-triggered\\runs}\\
+\midrule
+\textbf{SHDMS-ABC}
+& 0.8343
+& $0.9518 \pm 0.0726$
+& --
+& --
+& --
+& 0/50 \\
+
+SHDMS-ABC w/o SH
+& 0.8411
+& $0.9294 \pm 0.0693$
+& $-0.0224\;[-0.0493,\;+0.0045]$
+& 0.0649
+& 0.1947
+& 0/50 \\
+
+SHDMS-ABC w/o PS
+& 0.8627
+& $0.9502 \pm 0.0660$
+& $-0.0016\;[-0.0266,\;+0.0232]$
+& 0.8109
+& 1.0000
+& 0/50 \\
+
+SHDMS-ABC w/o RS
+& 0.8343
+& $0.9518 \pm 0.0726$
+& $0.0000\;[0.0000,\;0.0000]$
+& 1.0000
+& 1.0000
+& N/A \\
+\bottomrule
+\end{tabularx}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item[] \textit{Notes:} SH denotes success-history credit updating; PS denotes population-state scheduling; and RS denotes the directed restart/scout mechanism. Each variant used the same 50 seeds (5000--5049), initialization procedure, parameter bounds, and 6,600-evaluation budget. For w/o RS, a uniform random scout replaces the directed scout candidate. The paired difference is variant minus complete, so a positive value favors the complete algorithm because lower objective values are preferred. Confidence intervals use 100,000 paired-bootstrap resamples. Raw $p$-values use two-sided exact paired Wilcoxon signed-rank tests and are adjusted jointly by Holm's procedure; an all-zero paired comparison is reported as $p=1$ by a pre-specified degenerate-case convention. Restart-triggered runs count runs with at least one directed restart; the largest observed trial counter was 15, below the activation limit of 40. N/A applies when the directed mechanism is removed.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}
+\normalcolor
+\FloatBarrier
