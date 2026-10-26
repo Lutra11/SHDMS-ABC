@@ -69,6 +69,6 @@ Revision re-run outputs (Tables 6, 12, 13, 15, and 20 sources) are CSV files in 
 
 **Known caveats (documented for reproducibility):**
 1. `D-1.csv` (4-2.xlsx) reports the submission-version operational metrics of the 55-service plan (objective 2.9169, utilization 90.28%); the revised manuscript Table 7 uses the published 57-service plan with objective 6.8920 and utilization 93.75% - see `supplement/1.Algorithm-level fair comparison/` (AFC-4, AFC-5) for the revised plan.
-2. `D-31.csv` (4-11-2.xlsx) NST-HSR row (1.8619 +/- 3.4068) is the submission-version 10-run statistic; the revised manuscript Table 20 NST-HSR rows follow the unified-protocol best-of-30 plan (see `supplement/1.Algorithm-level fair comparison/AFC-4.csv`); the four external-line rows are in `AFC-3.csv` of the same folder.
+2. `D-31.csv` (4-11-2.xlsx) NST-HSR row (1.8619 +/- 3.4068) is the submission-version 10-run statistic; the revised manuscript Table 20 reports reference plans vs 30-run mean optimized plans (see `supplement/1.Algorithm-level fair comparison/AFC-4.csv` for NST-HSR); the four external-line rows are in `AFC-3.csv` of the same folder.
 3. The 4-5 series (D-9/D-10/D-11) and S3 (D-38) contain identical significance-test content; both are retained as found.
 4. Tables 6, 9, 12, 13, 15, and 19 of the revised manuscript draw on `supplement/` outputs and dataset workbooks rather than these 58 tables.

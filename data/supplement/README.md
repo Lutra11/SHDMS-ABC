@@ -23,7 +23,7 @@ CSV-only packages holding the revision experiments. Every file is UTF-8 CSV with
 |---|---|---|
 | [AFC-1.csv](1.Algorithm-level%20fair%20comparison/AFC-1.csv) | 36 | Unified-protocol re-run: 9 algorithms x 4 scenarios, 30 runs each; `mean_evals` reports each algorithm's natural evaluation count (Table 12) |
 | [AFC-2.csv](1.Algorithm-level%20fair%20comparison/AFC-2.csv) | 20 | Equal-budget control: SHDMS-ABC truncated to the 2,904 evaluations at which the four baselines terminate, vs PSO/DE/GWO/HHO (4 scenarios x 30 runs each) |
-| [AFC-3.csv](1.Algorithm-level%20fair%20comparison/AFC-3.csv) | 8 | Cross-line deployment, four external lines, baseline vs optimized (Table 20, external-line rows) |
+| [AFC-3.csv](1.Algorithm-level%20fair%20comparison/AFC-3.csv) | 8 | Cross-line deployment, four external lines, reference vs optimized (reference = each line's timetable plan; optimized = 30-run mean; Table 20, external-line rows) |
 | [AFC-4.csv](1.Algorithm-level%20fair%20comparison/AFC-4.csv) | 2 | Passenger perspective: original timetable vs the optimized 57-service plan (Tables 7–8; Table 20 NST-HSR row) |
 | [AFC-5.csv](1.Algorithm-level%20fair%20comparison/AFC-5.csv) | 3 | Ex-post constraint-violation audit: original plan, best-of-30 SHDMS-ABC plan, published Table 7 plan (Table 6) |
 
