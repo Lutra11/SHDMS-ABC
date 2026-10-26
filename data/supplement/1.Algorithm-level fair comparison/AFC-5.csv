@@ -1,0 +1,4 @@
+﻿plan,cap_violation,load_violation,revenue_violation,demand_violation,safe_violation,max_capacity_utilization,platform_utilization_max,line_utilization_max,objective
+Original timetable plan,0.0,0.07479438693877563,0.0,0.02166003594648311,0.0,0.8333333333333334,0.431752006245121,0.8333333333333334,62.276380785302294
+SHDMS-ABC optimized (best of 30 runs),0.0,0.0001440000000000056,0.0,0.0,0.0,0.9375,0.48674100000000003,0.9375,0.9860360272853439
+Paper Table 7 plan (intervals only),0.0,0.0001440000000000056,0.0,0.0,0.0,0.9375,,,0.9118439724246705

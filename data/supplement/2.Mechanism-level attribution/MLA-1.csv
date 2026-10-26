@@ -1,4 +1,4 @@
-scenario,variant,variant_label,seed,score,evaluations,directed_restarts,max_trial_counter,runtime_s
+﻿scenario,variant,variant_label,seed,score,evaluations,directed_restarts,max_trial_counter,runtime_s
 S1,full,SHDMS-ABC,5000,0.911822207488765,6600,0,6,0.94
 S1,full,SHDMS-ABC,5001,0.8906589760327821,6600,0,7,0.91
 S1,full,SHDMS-ABC,5002,0.9675319027896649,6600,0,8,0.92

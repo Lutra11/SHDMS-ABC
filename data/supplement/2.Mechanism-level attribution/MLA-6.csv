@@ -1,0 +1,5 @@
+﻿arm,variant,label,n_runs,mean,sample_sd,best_observed,rs_triggered_runs,directed_restarts_total,mean_restarts_per_run,max_trial_counter_low,max_trial_counter_high
+"activation arm (SN=4, cycles=3300)",full,SHDMS-ABC (complete),50,1.3756512561905612,0.12271061580484892,1.18093855810881,45,243,4.86,11,44
+"activation arm (SN=4, cycles=3300)",wo_rs,SHDMS-ABC w/o RS (random scout),50,1.390337905337799,0.1399644723413662,1.176343154630093,45,237,4.74,11,44
+"ceiling arm (SN=6, cycles=3300)",full,SHDMS-ABC (complete),50,1.445566795090316,0.15345741053526255,1.16413781245387,0,0,0.0,7,21
+"ceiling arm (SN=6, cycles=3300)",wo_rs,SHDMS-ABC w/o RS (random scout),50,1.445566795090316,0.15345741053526255,1.16413781245387,0,0,0.0,7,21

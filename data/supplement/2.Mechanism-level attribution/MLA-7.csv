@@ -1,0 +1,3 @@
+﻿arm,mean_difference_wo_rs_minus_complete,relative_difference_percent,bootstrap_95_ci_low,bootstrap_95_ci_high,wilcoxon_raw_p,wilcoxon_nonzero_pairs,complete_wins,complete_losses,ties,complete_wins_among_triggered,triggered_runs_full,triggered_runs_wo_rs,triggered_subset_mean_difference
+activation arm (SN=4),0.01468664914723778,1.0676142722326218,-0.01380480887783435,0.043507397135317594,0.20423811322626761,45,29,16,5,29,45,45,0.01631849905248642
+ceiling arm (SN=6),0.0,0.0,0.0,0.0,1.0,0,0,0,50,0,0,0,

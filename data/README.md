@@ -65,10 +65,10 @@ Note on robustness blocks: the current manuscript orders them as Table 16 (objec
 | [`D-57.csv`](D-57.csv) | `supplement/S10-2.xlsx` | Table S10 | 10 | Dataset field dictionary: station-period demand |
 | [`D-58.csv`](D-58.csv) | `supplement/S10-3.xlsx` | Table S10 | 7 | Dataset field dictionary: station attributes |
 
-Revision re-run outputs (Tables 6, 12, 13, 15, 20 sources) are machine-readable JSON/CSV in [`revision/`](revision) and are not duplicated here.
+Revision re-run outputs (Tables 6, 12, 13, 15, and 20 sources) are CSV files in [`supplement/`](supplement) (see [`supplement/README.md`](supplement/README.md)) and are not duplicated here.
 
 **Known caveats (documented for reproducibility):**
-1. `D-1.csv` (4-2.xlsx) reports the submission-version operational metrics of the 55-service plan (objective 2.9169, utilization 90.28%); the revised manuscript Table 7 uses the published 57-service plan with objective 6.8920 and utilization 93.75% - see `revision/` for the revised source.
-2. `D-31.csv` (4-11-2.xlsx) NST-HSR row (1.8619 +/- 3.4068) is the submission-version 10-run statistic; the revised manuscript Table 20 NST-HSR rows follow the unified-protocol 30-run re-run (see `revision/cross_line_baseline_vs_optimized.json`).
+1. `D-1.csv` (4-2.xlsx) reports the submission-version operational metrics of the 55-service plan (objective 2.9169, utilization 90.28%); the revised manuscript Table 7 uses the published 57-service plan with objective 6.8920 and utilization 93.75% - see `supplement/1.Algorithm-level fair comparison/` (AFC-4, AFC-5) for the revised plan.
+2. `D-31.csv` (4-11-2.xlsx) NST-HSR row (1.8619 +/- 3.4068) is the submission-version 10-run statistic; the revised manuscript Table 20 NST-HSR rows follow the unified-protocol best-of-30 plan (see `supplement/1.Algorithm-level fair comparison/AFC-4.csv`); the four external-line rows are in `AFC-3.csv` of the same folder.
 3. The 4-5 series (D-9/D-10/D-11) and S3 (D-38) contain identical significance-test content; both are retained as found.
-4. Tables 6, 9, 12, 13, 15, and 19 of the revised manuscript draw on `revision/` outputs and dataset workbooks rather than these 58 tables.
+4. Tables 6, 9, 12, 13, 15, and 19 of the revised manuscript draw on `supplement/` outputs and dataset workbooks rather than these 58 tables.

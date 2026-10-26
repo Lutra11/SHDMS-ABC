@@ -1,0 +1,5 @@
+﻿scenario,variant,label,n_runs,mean,sample_sd,best_observed,rs_triggered_runs,directed_restarts_total,max_trial_counter_low,max_trial_counter_high
+S1 (base),full,SHDMS-ABC,50,0.9518475384467436,0.07257509451264293,0.8343275699933141,0,0,6,9
+S1 (base),no_success_history,SHDMS-ABC w/o SH,50,0.9294197330523076,0.06931780528678139,0.841076357866555,0,0,5,11
+S1 (base),no_state_scheduling,SHDMS-ABC w/o PS,50,0.950242981610158,0.06597472210977372,0.8627490874588334,0,0,7,15
+S1 (base),no_directed_scout,SHDMS-ABC w/o RS,50,0.9518475384467436,0.07257509451264293,0.8343275699933141,,,6,9

@@ -1,4 +1,4 @@
-variant,variant_label,seed,score,evaluations,directed_restarts,max_trial_counter,stopped_cycle,runtime_s
+﻿variant,variant_label,seed,score,evaluations,directed_restarts,max_trial_counter,stopped_cycle,runtime_s
 full,SHDMS-ABC (complete),5000,1.5868441923122871,6600,0,9,472,0.9
 full,SHDMS-ABC (complete),5001,1.2039178893261784,6600,0,8,472,0.88
 full,SHDMS-ABC (complete),5002,1.4974767052477078,6600,0,10,472,0.88

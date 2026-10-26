@@ -1,0 +1,4 @@
+﻿scenario,contrast,mean_difference_variant_minus_complete,bootstrap_95_ci_low,bootstrap_95_ci_high,wilcoxon_raw_p,holm_adjusted_p,wilcoxon_nonzero_pairs
+S1 (base),no_success_history,-0.02242780539443598,-0.04934152960966368,0.004524241689762322,0.064886242135481,0.194658726406443,50
+S1 (base),no_state_scheduling,-0.0016045568365858243,-0.026641939108526618,0.023184084302053015,0.8109402812359416,1.0,50
+S1 (base),no_directed_scout,0.0,0.0,0.0,1.0,1.0,0
